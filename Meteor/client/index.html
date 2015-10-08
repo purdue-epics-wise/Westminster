@@ -1,0 +1,67 @@
+<head>
+  <title>Westminster</title>
+</head>
+<body>
+  {{> header}}
+  {{> activitySubmit}}
+  {{> activityList}}
+</body>
+
+<template name="header">
+  <h1>Westminster</h1>
+</template>
+
+<template name="activityList">
+  <ul class="list-group">
+    {{#each activities}}
+      <li href="#" class="list-group-item">
+        <h3>{{title}}</h3>
+        <p>{{description}}</p>
+      </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="activitySubmit">
+  <div style="display:inline-block;width:100%;">
+    <form>
+      <div class="form-group">
+        <label for="activity-submit-title" class="control-label col-xs-2">Title</label>
+        <div class="col-xs-10 separate">
+          <input type="text" class="form-control" id="activity-submit-title" placeholder="Title" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="activity-submit-description" class="control-label col-xs-2">Description</label>
+        <div class="col-xs-10 separate">
+          <textarea class="form-control" id="activity-submit-description" placeholder="Description"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="activity-submit-targets" class="control-label col-xs-2">Brain Targets</label>
+        <div class="col-xs-10 separate">
+          <input type="text" class="form-control" id="activity-submit-targets" placeholder="Brain Targets" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="activity-submit-tags" class="control-label col-xs-2">Tags</label>
+        <div class="col-xs-10 separate">
+          <input type="text" class="form-control" id="activity-submit-tags" placeholder="Tags" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="activity-submit-tutorial" class="control-label col-xs-2">Tutorial</label>
+        <div class="col-xs-10 separate">
+          <input type="text" class="form-control" id="activity-submit-tutorial" placeholder="Tutorial" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="activity-submit-documents" class="control-label col-xs-2">Documents</label>
+        <div class="col-xs-10 separate">
+          <input type="text" class="form-control" id="activity-submit-documents" placeholder="Documents" />
+        </div>
+      </div>
+      <button type="submit" class="btn" style="float:right; margin-right: 40px;">Create</button>
+    </form>
+  </div>
+</template>
