@@ -7,3 +7,5 @@
 meteor-platform
 autopublish
 insecure
+angular
+angularui:angular-ui-router

@@ -1,0 +1,22 @@
+<form>
+  <label>Title</label>
+  <input ng-model="newProgram.title" />
+  <label>Description</label>
+  <input ng-model="newProgram.description" />
+  <label>Brain Targets</label>
+  <input ng-model="newProgram.brainTargets" />
+  <label>Tags</label>
+  <input ng-model="newProgram.tags" />
+  <label>Document Link</label>
+  <input ng-model="newProgram.documentLink" />
+  <label>Tutorial Link</label>
+  <input ng-model="newProgram.tutorialLink" />
+  <button ng-click="programs.push(newProgram)">Submit</button>
+</form>
+<ul>
+  <li ng-repeat="program in programs">
+    <a href="/programs/{{program._id}}">{{program.title}}</a>
+    <p>{{program.description}}</p>
+    <button ng-click="remove(program)">X</button>
+  </li>
+</ul>
