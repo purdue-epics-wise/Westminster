@@ -5,7 +5,7 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
 angular
 angularui:angular-ui-router
+twbs:bootstrap
+accounts-password

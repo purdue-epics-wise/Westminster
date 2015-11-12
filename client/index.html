@@ -4,9 +4,18 @@
 
 <body>
   <div ng-app="westminster" ng-strict-di="">
-    <h1>
-      <a href="/programs">Home</a>
-    </h1>
-    <div ui-view></div>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/programs">Home</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/program/create">Create A Program</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div ui-view style="padding-top:80px;"></div>
   </div>
 </body>

@@ -1,22 +1,27 @@
-<form>
-  <label>Title</label>
-  <input ng-model="newProgram.title" />
-  <label>Description</label>
-  <input ng-model="newProgram.description" />
-  <label>Brain Targets</label>
-  <input ng-model="newProgram.brainTargets" />
-  <label>Tags</label>
-  <input ng-model="newProgram.tags" />
-  <label>Document Link</label>
-  <input ng-model="newProgram.documentLink" />
-  <label>Tutorial Link</label>
-  <input ng-model="newProgram.tutorialLink" />
-  <button ng-click="programs.push(newProgram)">Submit</button>
-</form>
-<ul>
-  <li ng-repeat="program in programs">
-    <a href="/programs/{{program._id}}">{{program.title}}</a>
-    <p>{{program.description}}</p>
-    <button ng-click="remove(program)">X</button>
-  </li>
-</ul>
+<div class="programs-container container">
+
+  <div class="filter-container">
+    <div ng-repeat="filter in filters" class="checkbox">
+      <label>
+        <input ng-click="changeFilter(filter)" id="{{filter}}-filter" type="checkbox" checked="true" value="{{filter}}"> {{filter}}
+      </label>
+    </div>
+  </div>
+
+  <div class="list-group">
+    <a class="list-group-item" href="/programs/{{program._id}}" ng-repeat="program in programs">
+      <h4 class="list-group-item-heading">{{program.title}}</h4>
+      <p class="list-group-item-text">{{program.brainTargets}}</p>
+      <button style="float:right;margin-top:-20px;" ng-click="remove(program)">X</button>
+    </a>
+  </div>
+
+  <!--<ul>
+    <li ng-repeat="program in programs">
+      <a href="/programs/{{program._id}}">{{program.title}}</a>
+      <p>{{program.description}}</p>
+      <button ng-click="remove(program)">X</button>
+    </li>
+  </ul>-->
+
+</div>
