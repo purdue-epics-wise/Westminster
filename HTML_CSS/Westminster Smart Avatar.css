@@ -1,0 +1,627 @@
+.smartsite_avatar{
+    position:relative !important;
+    margin:0 !important;
+    padding:0 !important;
+    display:block !important;
+    border-width: 0 !important;
+    
+}
+.smartsite_avatar  .avatar_icon_standard{
+/*    position:absolute !important;
+*/    display:block;
+}
+.smartsite_avatar .avatar_icon_over{
+/*    position:absolute !important;
+*/    display:none;
+}
+.smartsite_avatar .avatar_icon_close{
+/*    position:absolute !important;
+*/    display:none;
+}
+.smartsite_avatar .avatar_img{
+	border-width:0px; 
+	position:relative;
+	margin:0px;
+	padding:0px; 
+	max-width:none !important;
+}
+
+.smartsite_avatar .avatar_img{
+	border-width:0px; 
+	position:relative;
+	margin:0px;
+	padding:0px; 
+	max-width:none !important;
+}
+
+
+/***********styles for avatar icon images****************/
+.smartsite_avatar .avatar_image_standard, .smartsite_avatar .avatar_image_over, .smartsite_avatar .avatar_image_close{
+  padding:0 !important;
+  margin:0 !important;
+  position:relative !important;
+  border-width: 0 !important;	
+  cursor:pointer;
+}
+
+.smartsite_avatar .avatar_postframe{
+	
+	position:absolute;
+	width:0px; 
+	height:0px; 
+	display:none;
+}
+.smartsite_avatar .avatar_postframe2{
+	
+	display:none;
+}
+/********** styles for avatar questions****************/
+.smartsite_avatar .avatar_question_text{
+	
+	margin-top:0px !important;
+     margin-bottom:10px !important;
+	color:#FFFFFF ;
+     text-decoration:none !important;
+	font-family:Verdana, Arial,Helvetica, sans-serif !important;
+     font-size:11px !important;
+	font-weight:bold !important;
+	padding:0 !important;
+	font-style:normal !important;
+	line-height:15px !important;
+	width: 215px !important;
+	text-align: left !important;
+}
+.smartsite_avatar .avatar_highlighted_question{
+	color:#888;
+	
+}
+.smartsite_avatar .avatar_question_link{
+	
+	color:#FFFFFF !important;
+	text-decoration:none !important;
+	font-family:Verdana,Arial, Helvetica, sans-serif !important;
+	white-space: normal !important;
+	padding: 0 !important;
+	border:none !important;
+	
+}
+
+.smartsite_avatar .avatar_question_link:hover{
+	color:#7c9eff;
+	background:none !important;
+	border:none !important;
+	
+}
+/********** styles for avatar click to call****************/
+.smartsite_avatar .ccform{
+	top:0px !important; 
+	margin:0px !important; 
+	padding:0px !important;
+	
+}
+.smartsite_avatar .cc_txtfld{
+	width:150px !important; 
+	left:0px !important; 
+	height:16px !important;
+	font-family:Verdana, Arial, Helvetica, sans-serif !important; 
+	font-size:10px !important; 
+	top:1px; 
+	margin:0px !important; 
+	position:absolute !important;
+	
+}
+.smartsite_avatar .cc_image{
+	
+	position:absolute !important; 
+	top:-4px; 
+	left:160px;
+}
+.smartsite_avatar .avatar_calldiv{
+	display:none;
+	position:absolute; 
+	z-index:201; 
+	width:412px;
+     height:57px;
+	border-width:0px;
+	border-style:solid; 
+	border-color:#000000;
+     overflow:hidden;
+	
+	
+}
+.smartsite_avatar .calldivback{
+	position:absolute;
+	width:412px; 
+	height:57px; 
+	
+	
+}
+.smartsite_avatar .ccform_cont{
+	z-index:201; 
+	position:absolute;
+     width:250px;
+	left:142px; 
+	top:20px; 
+	font-family:Verdana, Arial, Helvetica,sans-serif; 
+	font-weight:bold;
+     color:#333333;
+	font-size:11px;
+	border-width:0px; 
+	height:20px;
+     border-color:#000000; 
+	border-style:solid;
+     padding:0px;
+	
+}
+.smartsite_avatar .call_us_now{
+	z-index:201;
+     position:absolute; 
+	width:80px;
+	left:60px; 
+	top:27px; 
+	font-family:Verdana,Arial, Helvetica, sans-serif; 
+	font-weight:bold;
+     color:#333333;
+	font-size:11px;
+	
+}
+/********** styles for html5 avatar****************/
+.smartsite_avatar .avatar_cont{
+	display:none;
+	
+}
+.smartsite_avatar .videoholder{
+	
+	overflow:hidden;
+	
+	height:338px;
+	position:absolute;
+	z-index:199;
+	left:0px; 
+	top:0px;
+}
+
+.smartsite_avatar .avatarvideo{
+	
+	
+	display:none; 
+	position:absolute; 
+	left:0px; 
+	top:0px;
+	/*border:10px solid #b5b5b5;*/
+	border-bottom:0px;
+	height:300px;
+	
+	z-index:9999999999999;
+	overflow:hidden;
+	
+ }
+	
+
+
+.smartsite_avatar .avatar_topframe{
+	
+	height:38px;
+	display:none;
+	
+	position:absolute;
+	z-index:201;
+	
+	
+}
+.smartsite_avatar .avatar_leftframe{
+	display:block;
+	width:20px;
+	background-image:url(http://www.elocallink.tv/zyte/zyte_images/avatar_leftframe.png);
+	height: 302px;
+	float: left;
+	z-index:4;
+	position:relative;
+	
+}
+.smartsite_avatar .avatar_rightframe{
+	display:block;
+	width:20px;
+	background-image:url(http://www.elocallink.tv/zyte/zyte_images/avatar_rightframe.png);
+	height: 302px;
+	float: right;
+	z-index:4;
+	position:relative;
+	/*top:-300px;**/
+	
+	
+}
+.smartsite_avatar .avatar_rightframe_fl{
+	display:block;
+	width:20px;
+	background-image:url(http://www.elocallink.tv/zyte/zyte_images/avatar_rightframe.png);
+	height: 302px;
+	float: right;
+	z-index:4;
+	position:relative;
+	/*top:-300px;*/
+	
+	
+}
+.smartsite_avatar .avatarvideo .avatar_overlay{
+	position:relative;
+	display:block;
+	visibility:visible;
+	z-index:2;
+	cursor:pointer;
+	
+	
+}
+.smartsite_avatar .avatarvideo .avatar_overlay span{
+	
+	position:absolute !important;
+	top:160px;
+	left:120px;
+	padding:10px 20px !important;
+	background-color:rgba(99,99,99,0.2) !important;
+	font-size:11pt !important;
+	color:#999 !important;
+	-moz-border-radius: 5px !important;
+     border-radius: 5px !important;
+}
+.smartsite_avatar .avatarvideo .avatar_overlay img{
+	
+	position:absolute;
+	width:400px;
+	height:300px;
+}
+.smartsite_avatar .avatarvideo embed{
+	width:400px !important;
+	height:300px !important;
+	
+}
+.smartsite_avatar .avatarvideo video{
+	position:relative;
+	
+	z-index:1;
+	
+}
+.smartsite_avatar .avatar_lowerbarcontainer{
+	
+	z-index:200;
+	overflow:hidden; 
+	position:absolute; 
+	width:672px; 
+	left:10px; 
+	top:560px; 
+	height:46px;
+	
+}
+/********** styles for avatar survey****************/
+.smartsite_avatar .avatar_formDivContainer{
+	overflow:hidden;
+	position:absolute !important;
+	z-index:199;
+	width:672px;
+	left:-21px; 
+	top:343px;
+	text-align:left !important;
+	line-height:normal !important;
+	
+}
+.smartsite_avatar .avatar_formDiv{
+	z-index:200;
+	position:relative; 
+	width:672px;
+	left:0px;
+     top:-9999px;
+	
+}
+.smartsite_avatar .avatar_topBarContainer{
+	height:4px;
+	width: 642px; 
+	position: relative; 
+	background-image:url(http://www.elocallink.tv/zyte/zyte_images/survey/smart_next_form_topbar.png);
+	background-repeat:no-repeat;
+	overflow:hidden;
+	
+}
+.smartsite_avatar .avatar_formtitle{
+	position: relative;
+     height:15px; 
+	width: 672px;
+     background-image:url(http://www.elocallink.tv/zyte/zyte_images/survey/smart_next_formbgV2.png);
+     background-repeat:repeat-y;
+	line-height:10px !important;
+	padding-top:5px;
+	font-weight:bold;
+	
+}
+.smartsite_avatar .avatar_titleLeftDiv{
+	width: 150px; 
+	padding-left:15px; 
+	font-size: 10px; 
+	font-style: italic; 
+	float:left;
+	color:rgb(51,51,51) !important;
+	font-family:"Times New Roman", Times, serif !important;
+	
+}
+.smartsite_avatar .avatar_titleRightDiv{
+	
+	width:105px;
+	font-size: 9px;
+     font-style: italic; 
+	float: right; 
+	position:relative;
+     right:15px;
+	color:rgb(51,51,51) !important;
+	font-family:"Times New Roman", Times, serif !important;
+}
+.smartsite_avatar .avatar_formContainer{
+	width: 672px; 
+	position:relative; 
+	background-image:url(http://www.elocallink.tv/zyte/zyte_images/survey/smart_next_formbgV2.png);
+     background-repeat: repeat-y;
+	color:rgb(51,51,51) !important;
+	
+}
+.smartsite_avatar .IFoundYouForm{
+	background-color:transparent !important;
+	padding:0 !important;
+	margin:0 !important;
+	font-family:Verdana,times,serif !important;
+	
+}
+.smartsite_avatar .avatar_btmBarContainer{
+	
+	clear:both;
+}
+.smartsite_avatar .avatar_lowershadow{
+	display:none;
+	position:absolute;
+	left:1px; 
+	top:402px;
+	
+}
+.smartsite_avatar .avatar_lowershadow_img{
+	
+	width:643px;
+	padding:0px; 
+	height:46px; 
+	border-width:0px; 
+	position:relative;
+	margin:0px; 
+	
+}
+.smartsite_avatar .avatar_textAreaContainer{
+	
+	overflow:hidden; 
+	position:absolute;
+	width:246px;
+     height:338px; 
+	left:0px; 
+	top:0px; 
+	z-index:199;
+}
+.smartsite_avatar .textArea{
+	
+	position:absolute;
+     
+	width:246px; 
+	height:338px;
+}
+.smartsite_avatar .textArea a:hover{
+	background:none !important;
+	border:none !important;
+}
+.smartsite_avatar .avatar_textImage{
+	
+	z-index:1;
+     position:absolute; 
+	left:0px; 
+	top:0px;
+}
+.smartsite_avatar .question_sec_title{
+	
+	z-index:202; 
+	color:#333333; 
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+     font-size:11px;
+	font-weight:bold; 
+	position:absolute;
+     left:13px; 
+	top:17px;
+}
+.smartsite_avatar .avatar_questions{
+	
+	z-index:202; 
+	color:#CCCCCC;
+     font-family:Verdana, Arial, Helvetica, sans-serif;
+     text-align:left; 
+	position:absolute; 
+	left:10px; 
+	top:39px;
+     border-width:0px;
+	padding:5px; 
+	border-color:#FCFCFC;
+     font-size:11px; 
+	border-style:solid; 
+	width:215px;
+     height:298px;
+	line-height:15px !important;
+	display:none;
+}
+.smartsite_avatar .avatar_questions_scrolling{
+	
+	z-index:202; 
+	color:#CCCCCC;
+     font-family:Verdana, Arial, Helvetica, sans-serif;
+     text-align:left; 
+	position:absolute; 
+	left:10px; 
+	top:38px;
+     border-width:0px;
+	padding:5px; 
+	border-color:#FCFCFC;
+     font-size:11px; 
+	border-style:solid; 
+	width:217px;
+     height:298px;
+	line-height:15px !important;
+	display:none;
+	overflow:auto;
+	overflow-x:hidden;
+     overflow-y:scroll;
+	overflow:-moz-scrollbars-vertical !important;
+}
+.smartsite_avatar .avatarclosebutton{
+	
+	position:absolute;
+	margin:0px;
+     border-width:0px; 
+	left:203px; 
+	top:11px; 
+	z-index:205;
+}
+.smartsite_avatar .avatarclosebutton2{
+	position:absolute;
+	border-width:0px;
+	margin:0px;
+	left:510px;
+	top:-7px;
+	z-index:205;
+	
+}
+.smartsite_avatar .avatarcallclosebutton{
+	z-index:205; 
+	display:none;
+	border-width:0px;
+	position:absolute;
+	
+}
+.smartsite_avatar .avatar_statusDiv{
+	color:#FFFFFF;
+	font-family:Verdana, Arial, Helvetica, sans-serif; 
+	font-size:11px;
+	text-align:right; 
+	position:absolute; 
+	color:#333333; 
+	font-weight:bold; 
+	width:500px; 
+	height:20px; 
+	z-index:200; 
+	display:none;
+	line-height:normal !important;
+	
+}
+
+.smartsite_avatar .avatar_transcript{
+	
+	cursor:pointer; 
+	display:none; 
+	z-index:200; 
+	position:absolute;
+}
+.smartsite_avatar .avatar_transcript_panel{
+	height:241px;
+	width:181px;
+	display:block; 
+	position:absolute;
+	left:100px; 
+	overflow:hidden; 
+	top:15px
+	
+}
+.smartsite_avatar .avatar_transcript_panel_inner{
+	height:241px;
+	width:176px;
+	position:absolute;
+	display:block; 
+	left:-181px;
+	top:0px
+	
+}
+.smartsite_avatar .transcript_image{
+	position:absolute
+	
+}
+.smartsite_avatar .transcript_panel_text{
+	
+	display:none;
+	width:176px;
+	overflow:scroll; 
+	position:absolute; 
+	left:1px; 
+	top:4px;
+	height:233px;
+}
+.smartsite_avatar .transcript_text_cont{
+	color:#000000; 
+	text-align:left;
+	margin:5px
+	font-size:11px;
+	font-family:Verdana, Arial, Helvetica,sans-serif;
+}
+.smartsite_avatar .transcript_title{
+	font-weight:bold; 
+	
+	
+}
+.smartsite_avatar .survey_option_row{
+	
+	clear:both;
+	
+	
+	padding-top:5px;
+	padding-left:8px; 
+	float:left;
+	width:664px;
+	
+}
+.smartsite_avatar .survey_option_div_other{
+	float:left;
+	width: 220px; 
+	font-size: 13px !important;
+	padding-left:4px;
+}
+.smartsite_avatar .survey_option_div{
+	float:left;
+	width: 220px; 
+	font-size: 13px !important;
+	
+	
+}
+.smartsite_avatar .survey_option_chk{
+	
+	
+	margin:0px 0px 0px 4px !important;
+	
+     width: auto !important;
+	
+	
+	
+}
+
+.smartsite_avatar .formSubmitDiv{
+	text-align:center;
+	clear:both;
+	padding-top:5px;
+	
+}
+.smartsite_avatar .formSubmitDiv input{
+	background-image:url(http://www.elocallink.tv/zyte/zyte_images/survey/smartavatar_next_submit.png); 
+	background-position:0 0px; 
+	border:none; 
+	width:77px;
+	height:24px;
+	background-color:#fff;
+}
+.smartsite_avatar .formSubmitDiv input:active{
+	background-image:url(http://www.elocallink.tv/zyte/zyte_images/survey/smartavatar_next_submit.png); 
+	background-position:0 -24px;
+}
+.smartsite_avatar .IFoundYouForm #avatar_source_div
+{
+	display:none !important;
+	line-height:0px !important;
+	
+}
+/********************************************/
+
+
