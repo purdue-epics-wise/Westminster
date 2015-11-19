@@ -1,0 +1,18 @@
+<div class="detail-container container">
+
+  <p>
+    Here you will see and change the details of the program:
+  </p>
+
+  <input ng-model="program.title" />
+  <input ng-model="program.description" />
+  <input ng-model="program.brainTargets" />
+  <input ng-model="program.tags" />
+  <input ng-model="program.documentLink" />
+  <input ng-model="program.tutorialLink" />
+
+  <button ng-click="save()">Save</button>
+  <button ng-click="reset()">Reset</button>
+  <button ui-sref="programs">Cancel</button>
+
+</div>
