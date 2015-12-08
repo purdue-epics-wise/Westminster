@@ -7,10 +7,15 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="{{ pathFor 'programSubmit' }}">Create A Program</a></li>
-            <li><a href="{{ pathFor 'frontArticlePage' }}">Article Page</a></li>
-            <li><a href="{{ pathFor 'frontSearchPage' }}">Search Page</a></li>
-            <li><a href="{{ pathFor 'frontLandingPage' }}">Landing Page</a></li>
+            {{#if currentUser}}
+              <li><a href="{{ pathFor 'programSubmit' }}">Create A Program</a></li>
+              <li><a href="{{ pathFor 'frontArticlePage' }}">Article Page</a></li>
+              <li><a href="{{ pathFor 'frontSearchPage' }}">Search Page</a></li>
+              <li><a href="{{ pathFor 'frontLandingPage' }}">Landing Page</a></li>
+              <li><a id="logout-button" href="#" >Log out</a></li>
+            {{else}}
+              <li><a href="{{ pathFor 'login' }}">Log in</a></li>
+            {{/if}}
           </ul>
         </div>
       </div>
