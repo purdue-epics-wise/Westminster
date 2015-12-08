@@ -1,0 +1,22 @@
+<template name="layout">
+  <div class="header">
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Home</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="{{ pathFor 'programSubmit' }}">Create A Program</a></li>
+            <li><a href="{{ pathFor 'frontArticlePage' }}">Article Page</a></li>
+            <li><a href="{{ pathFor 'frontSearchPage' }}">Search Page</a></li>
+            <li><a href="{{ pathFor 'frontLandingPage' }}">Landing Page</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="main-blaze">
+    {{> yield}}
+  </div>
+</template>

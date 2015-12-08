@@ -1,0 +1,19 @@
+<template name="programItem">
+  <a href="{{ pathFor 'programPage' }}">
+    <div class="program-item">
+      <h4>{{title}}</h4>
+      <div class="program-brain-targets">
+        <h6>Brain Targets: </h6>
+        {{#each brainTargets}}
+          <p>{{.}}, </p>
+        {{/each}}
+      </div>
+      <div class="program-tags">
+        <h6>Tags: </h6>
+        {{#each brainTargets}}
+          <p>{{.}}, </p>
+        {{/each}}
+      </div>
+    </div>
+  </a>
+</template>

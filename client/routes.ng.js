@@ -1,4 +1,6 @@
-angular.module("westminster").config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
+// Angular-Meteor Code
+
+/*angular.module("westminster").config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
 
@@ -33,4 +35,4 @@ angular.module("westminster").config(function ($urlRouterProvider, $stateProvide
 
   $urlRouterProvider.otherwise("/programs");
 
-});
+});*/

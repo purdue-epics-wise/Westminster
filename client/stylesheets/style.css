@@ -1,3 +1,41 @@
 .separate {
   padding-bottom: 20px;
 }
+
+/* LAYOUT */
+#main-blaze {
+  margin-top: 60px;
+}
+
+/* PROGRAM LIST */
+.program-brain-targets {
+
+}
+.program-brain-targets h6 {
+  display: inline;
+}
+.program-brain-targets p {
+  display: inline;
+}
+
+.program-tags {
+
+}
+.program-tags h6 {
+  display: inline;
+}
+.program-tags p {
+  display: inline;
+}
+
+/* GENERAL */
+.page {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding-top: 60px;
+}
