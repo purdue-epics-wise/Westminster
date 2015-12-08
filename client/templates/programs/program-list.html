@@ -1,6 +1,30 @@
 <template name="programList">
   <div class="page page-program-list">
     <div class="container">
+      <div class="input-group">
+        <input type="checkbox" checked="true" value="Memory" class="filter-checkbox" id="Memory-filter"> Memory
+      </div>
+      <div class="input-group">
+        <input type="checkbox" checked="true" value="Visuospartial" class="filter-checkbox" id="Visuospartial-filter"> Visuospartial
+      </div>
+      <div class="input-group">
+        <input type="checkbox" checked="true" value="Concentration" class="filter-checkbox" id="Concentration-filter"> Concentration
+      </div>
+      <div class="input-group">
+        <input type="checkbox" checked="true" value="Orientation" class="filter-checkbox" id="Orientation-filter"> Orientation
+      </div>
+      <div class="input-group">
+        <input type="checkbox" checked="true" value="Language" class="filter-checkbox" id="Language-filter"> Language
+      </div>
+      <div class="input-group">
+        <input type="checkbox" checked="true" value="Judgement" class="filter-checkbox" id="Judgement-filter"> Judgement
+      </div>
+      <div class="input-group">
+        <input type="checkbox" checked="true" value="Sequencing" class="filter-checkbox" id="Sequencing-filter"> Sequencing
+      </div>
+    </div>
+
+    <div class="container">
       {{#each programs}}
         {{> programItem}}
       {{/each}}
