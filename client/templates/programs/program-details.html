@@ -1,0 +1,36 @@
+<template name="programDetails">
+  <div class="page page-program-detail">
+    <div class="container">
+      <div class="program-tile">
+        <h2>{{title}}</h2>
+      </div>
+      <div class="program-description separate">
+        <p>{{description}}</p>
+      </div>
+      <div class="program-brain-targets separate">
+        <h4>Brain Targets</h4>
+        <ul>
+          {{#each brainTargets}}
+            <li>{{.}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="program-tags separate">
+        <h4>Tags</h4>
+        <ul>
+          {{#each tags}}
+            <li>{{.}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="program-document-link separate">
+        <h4>Document Link</h4>
+        <a href="{{documentLink}}">{{documentLink}}</a>
+      </div>
+      <div class="program-tutorial-link separate">
+        <h4>Tutorial Link</h4>
+        <a href="{{tutorialLink}}">{{tutorialLink}}</a>
+      </div>
+    </div>
+  </div>
+</template>

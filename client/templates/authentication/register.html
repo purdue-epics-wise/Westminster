@@ -1,18 +1,18 @@
 <template name="register">
-	<div class="container">
+	<div class="container margin-top">
+		<h2 class="separate">Register</h2>
 		<form id="register-form">
-			<div class="input-field">
+			<div class="form-group">
 				<label for="register-email">Email</label>
-				<input id="register-email" type="email" class="validate">
+				<input id="register-email" type="email" class="form-control">
 			</div>
-			<div class="input-field">
+			<div class="form-group">
 				<label for="register-password">Password</label>
-				<input id="register-password" type="password" class="validate">
+				<input id="register-password" type="password" class="form-control">
 			</div>
-			<button type="submit" class="waves-effect wave-light btn light-blue">
-				Register
-				<i class="mdi-content-send right"></i>
-			</button>
+
+			<button type="submit" class="btn btn-defaul margin-bottom">Register</button>
+
 			<p>Already have an account? <a href="{{ pathFor 'login' }}">Log in here</a></p>
 		</form>
 	</div>

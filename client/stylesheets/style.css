@@ -1,3 +1,14 @@
+html, body {
+  background-color: #fff !important;
+}
+
+h2 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-size: 2em !important;
+    color: #000 !important;
+    text-shadow: none !important;
+}
+
 .separate {
   padding-bottom: 20px;
 }
@@ -38,6 +49,21 @@
   left: 0;
 
   padding-top: 60px;
+}
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+.padding-left {
+  padding-left: 20px;
+}
+.margin-top {
+  margin-top: 10px;
+}
+.margin-bottom {
+  margin-bottom: 20px !important;
 }
 
 .program-tile {
