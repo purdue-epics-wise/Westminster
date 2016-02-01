@@ -1,3 +1,15 @@
+var programDocsStore = new FS.Store.FileSystem("programDocs", {
+  path: "~/uploads/programs"
+});
+programDocs = new FS.Collection("programDocs", {
+  stores: [programDocsStore]
+});
+
+Template.programSubmit.onRendered(function () {
+  Session.set("program-docs", []);
+  Session.set("current-doc-names", []);
+});
+
 Template.programSubmit.events({
   "submit form": function (e) {
     e.preventDefault();
@@ -31,7 +43,31 @@ Template.programSubmit.events({
     Meteor.call("insertProgram", program, function (error, result) {
       if (error)
         return console.log("Could not insert program.");
+      Session.set("program-docs", []);
       Router.go("programDetails", { _id: result._id });
     });
+  },
+  "click .upload-btn": function (e) {
+    e.preventDefault();
+
+    var file = $("#file").get(0).files[0];
+    var fileObj = programDocs.insert(file);
+
+    var sessionProgramDocs = Session.get("program-docs");
+    var sessionDocNames = Session.get("current-doc-names");
+
+    sessionProgramDocs.push(fileObj);
+    sessionDocNames.push(fileObj.name());
+
+    Session.set("program-docs", sessionProgramDocs);
+    Session.set("current-doc-names", sessionDocNames);
   }
 });
+
+Template.programSubmit.helpers({
+  fileNames: function () {
+    var sessionDocNames = Session.get("current-doc-names");
+    if (sessionDocNames)
+      return sessionDocNames;
+  }
+})
