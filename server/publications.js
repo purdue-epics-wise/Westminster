@@ -10,3 +10,8 @@ Meteor.publish("programById", function (programId) {
 Meteor.publish("activities", function () {
   return Activities.find();
 });
+
+Meteor.publish("activityById", function (activityId) {
+  check(activityId, String);
+  return Activities.find(activityId);
+})
