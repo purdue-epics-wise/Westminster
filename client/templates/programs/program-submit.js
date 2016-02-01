@@ -28,10 +28,10 @@ Template.programSubmit.events({
 
     console.log(program);
 
-    Programs.insert(program, function (error, result) {
+    Meteor.call("insertProgram", program, function (error, result) {
       if (error)
-        return alert("An error occured");
-      Router.go("programDetails", { _id: result });
+        return console.log("Could not insert program.");
+      Router.go("programDetails", { _id: result._id });
     });
   }
 });

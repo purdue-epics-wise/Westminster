@@ -42,20 +42,22 @@ Template.programPage.events({
     }
 
     var program = {
+      _id: this._id,
       title: $("#program-submit-title").val(),
       description: $("#program-submit-description").val(),
       brainTargets: filterList,
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
       documentLink: $("#program-submit-document-link").val(),
-      tutorialLink: $("#program-submit-tutorial-link").val()
+      tutorialLink: $("#program-submit-tutorial-link").val(),
+      userId: this.userId
     };
 
     console.log(program);
 
-    Programs.update(program, function (error, result) {
+    Meteor.call("updateProgram", program, function (error, result) {
       if (error)
-        return alert("An error occured");
-      Router.go("programPage", { _id: result });
+        return console.log("Could not update program.");
+      Router.go("programDetails", { _id: result._id });
     });
   }
 });

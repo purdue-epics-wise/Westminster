@@ -1,4 +1,4 @@
-Template.programPage.helpers({
+Template.activityPage.helpers({
   memoryChecked: function () {
     return this.brainTargets.indexOf("Memory") >= 0;
   },
@@ -22,7 +22,7 @@ Template.programPage.helpers({
   }
 })
 
-Template.programPage.events({
+Template.activityPage.events({
   "submit form": function (e) {
     e.preventDefault();
 
@@ -41,21 +41,23 @@ Template.programPage.events({
         filterList.push(filter);
     }
 
-    var activty = {
+    var activity = {
+      _id: this._id,
       title: $("#program-submit-title").val(),
       description: $("#program-submit-description").val(),
       brainTargets: filterList,
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
       documentLink: $("#program-submit-document-link").val(),
-      tutorialLink: $("#program-submit-tutorial-link").val()
+      tutorialLink: $("#program-submit-tutorial-link").val(),
+      userId: this.userId
     };
 
     console.log(activity);
 
-    Meteor.call("insertActivity", activity, function (error, result) {
+    Meteor.call("updateActivity", activity, function (error, result) {
       if (error)
         return console.log("Could not insert Activity. Reason: " + error.reason);
-      Router.go("activtyDetails", { _id: result });
+      Router.go("activityDetails", { _id: result._id });
     });
   }
 });
