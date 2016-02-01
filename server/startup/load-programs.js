@@ -1,5 +1,7 @@
 Meteor.startup(function () {
   if (Programs.find().count() == 0) {
+    var testUserId = "12345"
+
     var programs = [
       {
         title: "Back to School",
@@ -7,7 +9,9 @@ Meteor.startup(function () {
         brainTargets: ["Memory", "Visuospartial", "Concentration"],
         tags: ["School"],
         documentLink: "google.com",
-        tutorialLink: "purdue.edu"
+        tutorialLink: "purdue.edu",
+        userId: testUserId,
+        created: new Date()
       },
       {
         title: "Memory Special",
@@ -15,7 +19,9 @@ Meteor.startup(function () {
         brainTargets: ["Memory"],
         tags: ["School"],
         documentLink: "google.com",
-        tutorialLink: "purdue.edu"
+        tutorialLink: "purdue.edu",
+        userId: testUserId,
+        created: new Date()
       },
       {
         title: "Visuospartial Special",
@@ -23,7 +29,9 @@ Meteor.startup(function () {
         brainTargets: ["Visuospartial"],
         tags: ["School"],
         documentLink: "google.com",
-        tutorialLink: "purdue.edu"
+        tutorialLink: "purdue.edu",
+        userId: testUserId,
+        created: new Date()
       },
       {
         title: "Concentration Special",
@@ -31,7 +39,9 @@ Meteor.startup(function () {
         brainTargets: ["Concentration"],
         tags: ["School"],
         documentLink: "google.com",
-        tutorialLink: "purdue.edu"
+        tutorialLink: "purdue.edu",
+        userId: testUserId,
+        created: new Date()
       },
       {
         title: "Orientation Special",
@@ -39,7 +49,9 @@ Meteor.startup(function () {
         brainTargets: ["Orientation"],
         tags: ["School"],
         documentLink: "google.com",
-        tutorialLink: "purdue.edu"
+        tutorialLink: "purdue.edu",
+        userId: testUserId,
+        created: new Date()
       },
       {
         title: "Language Special",
@@ -47,7 +59,9 @@ Meteor.startup(function () {
         brainTargets: ["Language"],
         tags: ["School"],
         documentLink: "google.com",
-        tutorialLink: "purdue.edu"
+        tutorialLink: "purdue.edu",
+        userId: testUserId,
+        created: new Date()
       },
       {
         title: "Judgement Special",
@@ -55,7 +69,9 @@ Meteor.startup(function () {
         brainTargets: ["Judgement"],
         tags: ["School"],
         documentLink: "google.com",
-        tutorialLink: "purdue.edu"
+        tutorialLink: "purdue.edu",
+        userId: testUserId,
+        created: new Date()
       },
       {
         title: "Sequencing Special",
@@ -63,7 +79,9 @@ Meteor.startup(function () {
         brainTargets: ["Sequencing"],
         tags: ["School"],
         documentLink: "google.com",
-        tutorialLink: "purdue.edu"
+        tutorialLink: "purdue.edu",
+        userId: testUserId,
+        created: new Date()
       },
     ];
 
