@@ -59,5 +59,14 @@ Template.activityPage.events({
         return console.log("Could not insert Activity. Reason: " + error.reason);
       Router.go("activityDetails", { _id: result._id });
     });
+  },
+  "click .delete-btn": function (e) {
+    e.preventDefault();
+
+    Meteor.call("deleteActivity", this._id, this.userId, function (error, result) {
+      if (error)
+        return console.log("Could not remove activity.");
+      Router.go("activityList");
+    });
   }
 });

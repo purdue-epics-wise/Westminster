@@ -59,5 +59,14 @@ Template.programPage.events({
         return console.log("Could not update program.");
       Router.go("programDetails", { _id: result._id });
     });
+  },
+  "click .delete-btn": function (e) {
+    e.preventDefault();
+
+    Meteor.call("deleteProgram", this._id, this.userId, function (error, result) {
+      if (error)
+        return console.log("Could not remove program.");
+      Router.go("programList");
+    });
   }
 });
