@@ -1,3 +1,10 @@
+Template.programList.onCreated(function () {
+  Session.set("query-filter", [
+    "Memory", "Visuospartial", "Concentration",
+    "Orientation", "Language", "Judgement", "Sequencing"
+  ]);
+});
+
   Template.programList.onRendered(function () {
   var filterObject = {
       "Memory": $("#Memory-filter").is(':checked'),
