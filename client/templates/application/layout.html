@@ -1,7 +1,9 @@
 <template name="layout">
-  <div class="background-img-wrapper">
-    <div class="background-img"></div>
-  </div>
+  {{#if showBackground}}
+    <div class="background-img-wrapper">
+      <div class="background-img"></div>
+    </div>
+  {{/if}}
   <div class="header">
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
