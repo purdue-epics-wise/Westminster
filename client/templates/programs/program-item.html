@@ -1,31 +1,29 @@
 <template name="programItem">
   
-  <a href="{{ pathFor 'programDetails' }}">
+  
     <div class="program-item">
+      <div class="col-sm-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">{{title}}<a class="float-right" href="{{ pathFor 'programPage' }}">Edit</a></h3>
+          <h3 class="panel-title">
+            <a href="{{ pathFor 'programDetails' }}">{{title}}</a>
+            <a class="float-right" href="{{ pathFor 'programPage' }}">Edit</a>
+          </h3>
         </div>
             <div class="panel-body">
 
-              <h6>Brain Targets: </h6>
-              {{#each brainTargets}}
-                {{.}},
-              {{/each}}
-
-              <h6>Tags: </h6>
+              <h6><span style="color:red">Brain Targets:</span> 
+                {{#each brainTargets}}
+                  {{.}},
+                {{/each}}
+              </h6>
+              <h6><span style="color:blue">Tags:</span> 
               {{#each brainTargets}}
                 {{.}}, 
               {{/each}}
-
+              </h6>
             </div>
           </div>
-      <div class="program-brain-targets">
-        
-      </div>
-      <div class="program-tags">
-        
       </div>
     </div>
-  </a>
 </template>
