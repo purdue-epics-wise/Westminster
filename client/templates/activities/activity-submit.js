@@ -1,3 +1,11 @@
+var currentFiles = new ReactiveVar();
+var fileNames;
+
+Template.activitySubmit.onRendered(function () {
+  currentFiles.set([]);
+  fileNames = [];
+});
+
 Template.activitySubmit.events({
   "submit form": function (e) {
     e.preventDefault();
@@ -33,5 +41,33 @@ Template.activitySubmit.events({
         return console.log("Could not insert Activity. Reason: " + error.reason);
       Router.go("activityDetails", { _id: result._id });
     });
+  },
+  "change .activity-file-input": function (e) {
+    FS.Utility.eachFile(e, function (file) {
+      var tmp = currentFiles.get();
+      tmp.push(file);
+      currentFiles.set(tmp);
+      /*ActivityFiles.insert(file, function (error, fileObj) {
+        if (error)
+          return alert("Could not upload file");
+        var userId = Meteor.userId();
+        var activityFileUrl = {
+          "documentPath": "/cfs/files/activities/" + fileObj._id
+        };
+        // Meteor method for inserting files
+      });*/
+    });
   }
 });
+
+Template.activitySubmit.helpers({
+  fileNames: function () {
+    var files = currentFiles.get();
+    if (files && files.length > 0) {
+      _.each(files, function (fileObj) {
+        fileNames.push(fileObj.name);
+      });
+      return fileNames;
+    }
+  }
+})

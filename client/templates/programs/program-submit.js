@@ -1,13 +1,9 @@
-var programDocsStore = new FS.Store.FileSystem("programDocs", {
-  path: "~/uploads/programs"
-});
-programDocs = new FS.Collection("programDocs", {
-  stores: [programDocsStore]
-});
+var currentFiles = new ReactiveVar();
 
 Template.programSubmit.onRendered(function () {
   Session.set("program-docs", []);
   Session.set("current-doc-names", []);
+  currentFiles.set([]);
 });
 
 Template.programSubmit.events({
@@ -50,7 +46,7 @@ Template.programSubmit.events({
   "click .upload-btn": function (e) {
     e.preventDefault();
 
-    var file = $("#file").get(0).files[0];
+    /*var file = $("#file").get(0).files[0];
     var fileObj = programDocs.insert(file);
 
     var sessionProgramDocs = Session.get("program-docs");
@@ -60,13 +56,13 @@ Template.programSubmit.events({
     sessionDocNames.push(fileObj.name());
 
     Session.set("program-docs", sessionProgramDocs);
-    Session.set("current-doc-names", sessionDocNames);
+    Session.set("current-doc-names", sessionDocNames);*/
   }
 });
 
 Template.programSubmit.helpers({
   fileNames: function () {
-    var sessionDocNames = Session.get("current-doc-names");
+    var currentFilesReactive = Session.get("current-doc-names");
     if (sessionDocNames)
       return sessionDocNames;
   }
