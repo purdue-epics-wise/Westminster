@@ -27,8 +27,11 @@
           </ul>
         </div>
         <div class="program-document-link separate">
-          <h4>Document Link</h4>
-          <a href="{{documentLink}}">{{documentLink}}</a>
+          <h4>Documents</h4>
+          {{#each documentRecords}}
+            {{name}}
+            <a class="btn btn-primary" href="{{url download=true}}" target="_parent">Download</a>
+          {{/each}}
         </div>
         <div class="program-tutorial-link separate">
           <h4>Tutorial Link</h4>

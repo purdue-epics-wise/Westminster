@@ -27,3 +27,4 @@ cfs:standard-packages
 cfs:dropbox
 cfs:gridfs
 reactive-var
+cfs:ejson-file
