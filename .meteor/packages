@@ -24,5 +24,7 @@ check
 twbs:bootstrap
 less
 cfs:standard-packages
-cfs:filesystem
 cfs:dropbox
+cfs:gridfs
+reactive-var
+cfs:ejson-file

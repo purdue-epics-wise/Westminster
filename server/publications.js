@@ -15,3 +15,7 @@ Meteor.publish("activityById", function (activityId) {
   check(activityId, String);
   return Activities.find(activityId);
 })
+
+Meteor.publish("activityFiles", function () {
+  return ActivityFiles.find();
+});
