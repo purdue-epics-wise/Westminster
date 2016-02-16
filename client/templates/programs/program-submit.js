@@ -10,7 +10,7 @@ Template.programSubmit.events({
   "submit form": function (e) {
     e.preventDefault();
 
-    var filterObject = {
+    /*var filterObject = {
         "Memory": $("#Memory-filter2").is(':checked'),
         "Visuospartial": $("#Visuospartial-filter2").is(':checked'),
         "Concentration": $("#Concentration-filter2").is(':checked'),
@@ -23,12 +23,12 @@ Template.programSubmit.events({
     for (filter in filterObject) {
       if (filterObject[filter])
         filterList.push(filter);
-    }
+    }*/
 
     var program = {
       title: $("#program-submit-title").val(),
       description: $("#program-submit-description").val(),
-      brainTargets: filterList,//$("#program-submit-brain-targets").val().replace(/\s+/g, "").split(","),
+      brainTargets: "None", //TODO: From selected Activities
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
       documentLink: $("#program-submit-document-link").val(),
       tutorialLink: $("#program-submit-tutorial-link").val()
@@ -65,5 +65,8 @@ Template.programSubmit.helpers({
     var currentFilesReactive = Session.get("current-doc-names");
     if (sessionDocNames)
       return sessionDocNames;
+  },
+  showActivities: function () {
+    return true;
   }
 })
