@@ -1,9 +1,14 @@
 var currentFiles = new ReactiveVar();
+var selectedActivities = new ReactiveVar()
 
 Template.programSubmit.onRendered(function () {
   Session.set("program-docs", []);
   Session.set("current-doc-names", []);
   currentFiles.set([]);
+
+  selectedActivities.set([]);
+
+  Session.set("show-activity-select-modal", false);
 });
 
 Template.programSubmit.events({
@@ -57,6 +62,30 @@ Template.programSubmit.events({
 
     Session.set("program-docs", sessionProgramDocs);
     Session.set("current-doc-names", sessionDocNames);*/
+  },
+  /* Activity Select Modal */
+  "click .add-activities-btn": function (e) {
+    e.preventDefault();
+    Session.set("show-activity-select-modal", true);
+  },
+  "click .activity-select-cancel-btn": function (e) {
+    e.preventDefault();
+    Session.set("show-activity-select-modal", false);
+  },
+  "click .activity-select-modal-item": function (e) {
+    e.preventDefault();
+
+    var tmp = selectedActivities.get();
+    $(e.target).toggleClass("selected");
+
+    if ($(e.target).hasClass("selected"))
+      selectedActivities.set(_.union(tmp, this._id));
+    else
+      selectedActivities.set(_.difference(tmp, this._id));
+  },
+  "click .activity-select-submit-btn": function (e) {
+    e.preventDefault();
+    Session.set("show-activity-select-modal", false);
   }
 });
 
@@ -66,7 +95,11 @@ Template.programSubmit.helpers({
     if (sessionDocNames)
       return sessionDocNames;
   },
+  /* Acitivity Select Modal */
   showActivities: function () {
-    return true;
+    return Session.get("show-activity-select-modal");
+  },
+  activities: function () {
+    return Activities.find();
   }
-})
+});
