@@ -33,7 +33,7 @@ Template.programSubmit.events({
     var program = {
       title: $("#program-submit-title").val(),
       description: $("#program-submit-description").val(),
-      brainTargets: "None", //TODO: From selected Activities
+      activityIds: selectedActivities.get(),
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
       documentLink: $("#program-submit-document-link").val(),
       tutorialLink: $("#program-submit-tutorial-link").val()
@@ -98,6 +98,9 @@ Template.programSubmit.helpers({
   /* Acitivity Select Modal */
   showActivities: function () {
     return Session.get("show-activity-select-modal");
+  },
+  uploadActivities: function () {
+    return false;
   },
   activities: function () {
     return Activities.find();
