@@ -1,13 +1,46 @@
 <template name="activityList">
   <div class="page activity-list-page">
-
-    <div class="activity-list-wrapper">
-      <div class="activity-list-container">
-        {{#each activites}}
-          {{title}}
-        {{/each}}
+  	<div class="filter-container container margin-top">
+      <div class="filter-container-title float-left">
+        <h4>Filters</h4>
       </div>
+      <div class="container margin-top">
+        <div class="input-group float-left padding-left">
+          <input type="checkbox" checked="true" value="Memory" class="filter-checkbox" id="Memory-filter"> Memory
+        </div>
+        <div class="input-group float-left padding-left">
+          <input type="checkbox" checked="true" value="Visuospartial" class="filter-checkbox" id="Visuospartial-filter"> Visuospartial
+        </div>
+        <div class="input-group float-left padding-left">
+          <input type="checkbox" checked="true" value="Concentration" class="filter-checkbox" id="Concentration-filter"> Concentration
+        </div>
+        <div class="input-group float-left padding-left">
+          <input type="checkbox" checked="true" value="Orientation" class="filter-checkbox" id="Orientation-filter"> Orientation
+        </div>
+        <div class="input-group float-left padding-left">
+          <input type="checkbox" checked="true" value="Language" class="filter-checkbox" id="Language-filter"> Language
+        </div>
+        <div class="input-group float-left padding-left">
+          <input type="checkbox" checked="true" value="Judgement" class="filter-checkbox" id="Judgement-filter"> Judgement
+        </div>
+        <div class="input-group float-left padding-left">
+          <input type="checkbox" checked="true" value="Sequencing" class="filter-checkbox" id="Sequencing-filter"> Sequencing
+        </div>
+      </div>
+    </div>
+
+  	<div class="activities-container container" style="padding-bottom: 120px;">
+	    <div class="activity-list-wrapper">
+	    	<h2>Activities</h2>
+	      <div class="activity-list-container">
+	        {{#each activities}}
+	          {{> activityItem}}
+	        {{/each}}
+	      </div>
+  		</div>
     </div>
 
   </div>
 </template>
+
+

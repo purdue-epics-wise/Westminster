@@ -9,7 +9,6 @@ Template.activitySubmit.onRendered(function () {
 
   Session.set("upload-status", "No Files Uploaded");
   Session.set("documents-ready", false);
-  //Session.set("document-info", {});
 });
 
 Template.activitySubmit.events({
@@ -25,10 +24,13 @@ Template.activitySubmit.events({
       brainTargets: filterList,//$("#program-submit-brain-targets").val().replace(/\s+/g, "").split(","),
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
       tutorialLink: $("#program-submit-tutorial-link").val(),
-      //documentURLs: documentInfo.documentPaths,
-      //documentIds: documentInfo.documentIds
       documents: currentFileObjs.get()
     };
+    if(validateActivity(Activity)) {
+      /*Do nothing*/
+    } else {
+      return (submitError());
+    }
 
     console.log(activity);
 
@@ -39,33 +41,6 @@ Template.activitySubmit.events({
       Session.set("documents-ready", false);
       Router.go("activityDetails", { _id: result._id });
     });
-
-    /*Tracker.autorun(function () {
-      if (Session.get("documents-ready")) {
-        //var documentInfo = Session.get("document-info");
-
-        var activity = {
-          title: $("#program-submit-title").val(),
-          description: $("#program-submit-description").val(),
-          brainTargets: filterList,//$("#program-submit-brain-targets").val().replace(/\s+/g, "").split(","),
-          tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
-          tutorialLink: $("#program-submit-tutorial-link").val(),
-          //documentURLs: documentInfo.documentPaths,
-          //documentIds: documentInfo.documentIds
-          documents: currentFiles.get()
-        };
-
-        console.log(activity);
-
-        Meteor.call("insertActivity", activity, function (error, result) {
-          if (error)
-            return console.log("Could not insert Activity. Reason: " + error.reason);
-
-          Session.set("documents-ready", false);
-          Router.go("activityDetails", { _id: result._id });
-        });
-      }
-    });*/
   },
   "change .activity-file-input": function (e) {
     Session.set("upload-status", "Uploading...");
@@ -148,3 +123,23 @@ var uploadComplete = function (numberOfUploads, documentPaths) {
   if (numberOfUploads == documentPaths.length)
     return documentPaths;
 }
+
+var validateActivity = function(activity) {
+      if (activity.title === "" || activity.description === "" || activity.tags === "" || activity.documentLink === "" || activity.tutorialLink === "") {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+var submitError = function(activity) {
+  if ($("#activityError").length) {
+    /* Do nothing */
+  } else {
+    var tag = document.createElement("p");
+    var text = document.createTextNode("One or more fields may be empty, please check and resubmit.");
+    tag.appendChild(text);
+    var element = document.getElementById("activityError");
+    element.appendChild(tag);
+    }
+  }

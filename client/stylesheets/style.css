@@ -73,3 +73,12 @@ h2 {
 .program-description {
 
 }
+
+.submitError {
+  color: red;
+}
+
+.activityError {
+color: red;
+
+}

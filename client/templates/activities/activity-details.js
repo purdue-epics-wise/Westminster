@@ -15,7 +15,6 @@ Template.activityDetails.helpers({
       _.each(activityFiles, function (fileObj) {
         files.push(fileObj.getFileRecord());
       });
-      console.log(files);
       return files;
     }
   }
