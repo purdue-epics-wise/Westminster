@@ -37,17 +37,21 @@ Template.programSubmit.events({
       documentLink: $("#program-submit-document-link").val(),
       tutorialLink: $("#program-submit-tutorial-link").val()
     };
-
+    
+    if(validateProgram(program)) {
+      /*Do nothing*/
+    } else {
+      return (submitError());
+    }
     console.log(program);
-
+/*VALIDATE PROGRAM GOES HERE WEE...HAW*/
     Meteor.call("insertProgram", program, function (error, result) {
       if (error)
         return console.log("Could not insert program.");
       Session.set("program-docs", []);
       Router.go("programDetails", { _id: result._id });
     });
-  },
-  "click .upload-btn": function (e) {
+  }, "click .upload-btn": function (e) {
     e.preventDefault();
 
     var file = $("#file").get(0).files[0];
@@ -64,6 +68,7 @@ Template.programSubmit.events({
   }
 });
 
+
 Template.programSubmit.helpers({
   fileNames: function () {
     var sessionDocNames = Session.get("current-doc-names");
@@ -71,3 +76,24 @@ Template.programSubmit.helpers({
       return sessionDocNames;
   }
 })
+
+
+var validateProgram = function(program) {
+  if (program.title === "" || program.description === "" || program.tags === "" || program.documentLink === "" || program.tutorialLink === "") {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+var submitError = function(program) {
+  if ($("#submitError").length) {
+    /* Do nothing*/
+  } else {
+  var tag = document.createElement("p");
+  var text = document.createTextNode("One or more fields may be empty, please check and resubmit.");
+  tag.appendChild(text);
+  var element = document.getElementById("submitError");
+  element.appendChild(tag);
+  }
+}

@@ -25,6 +25,11 @@ Template.activitySubmit.events({
       documentLink: $("#program-submit-document-link").val(),
       tutorialLink: $("#program-submit-tutorial-link").val()
     };
+    if(validateActivity(Activity)) {
+      /*Do nothing*/
+    } else {
+      return (submitError());
+    }
 
     console.log(activity);
 
@@ -33,5 +38,25 @@ Template.activitySubmit.events({
         return console.log("Could not insert Activity. Reason: " + error.reason);
       Router.go("activityDetails", { _id: result._id });
     });
+
+    var validateActivity = function(activity) {
+      if (activity.title === "" || activity.description === "" || activity.tags === "" || activity.documentLink === "" || activity.tutorialLink === "") {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    var submitError = function(activity) {
+      if ($("#activityError").length) {
+        /* Do nothing */
+      } else {
+      var tag = document.createElement("p");
+      var text = document.createTextNode("One or more fields may be empty, please check and resubmit.");
+      tag.appendChild(text);
+      var element = document.getElementById("activityError");
+      element.appendChild(tag);
+      }
+    }
   }
 });
