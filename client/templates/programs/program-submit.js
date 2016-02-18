@@ -110,7 +110,6 @@ Template.programSubmit.helpers({
   activities: function () {
     return Activities.find();
   }
-<<<<<<< HEAD
 })
 
 
@@ -133,6 +132,3 @@ var submitError = function(program) {
   element.appendChild(tag);
   }
 }
-=======
-});
->>>>>>> origin/master

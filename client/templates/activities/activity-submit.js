@@ -41,28 +41,6 @@ Template.activitySubmit.events({
       Session.set("documents-ready", false);
       Router.go("activityDetails", { _id: result._id });
     });
-<<<<<<< HEAD
-
-    var validateActivity = function(activity) {
-      if (activity.title === "" || activity.description === "" || activity.tags === "" || activity.documentLink === "" || activity.tutorialLink === "") {
-        return false;
-      } else {
-        return true;
-      }
-    }
-
-    var submitError = function(activity) {
-      if ($("#activityError").length) {
-        /* Do nothing */
-      } else {
-      var tag = document.createElement("p");
-      var text = document.createTextNode("One or more fields may be empty, please check and resubmit.");
-      tag.appendChild(text);
-      var element = document.getElementById("activityError");
-      element.appendChild(tag);
-      }
-    }
-=======
   },
   "change .activity-file-input": function (e) {
     Session.set("upload-status", "Uploading...");
@@ -92,7 +70,6 @@ Template.activitySubmit.helpers({
   },
   uploadStatus: function () {
     return Session.get("upload-status");
->>>>>>> origin/master
   }
 });
 
@@ -146,3 +123,23 @@ var uploadComplete = function (numberOfUploads, documentPaths) {
   if (numberOfUploads == documentPaths.length)
     return documentPaths;
 }
+
+var validateActivity = function(activity) {
+      if (activity.title === "" || activity.description === "" || activity.tags === "" || activity.documentLink === "" || activity.tutorialLink === "") {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+var submitError = function(activity) {
+  if ($("#activityError").length) {
+    /* Do nothing */
+  } else {
+    var tag = document.createElement("p");
+    var text = document.createTextNode("One or more fields may be empty, please check and resubmit.");
+    tag.appendChild(text);
+    var element = document.getElementById("activityError");
+    element.appendChild(tag);
+    }
+  }
