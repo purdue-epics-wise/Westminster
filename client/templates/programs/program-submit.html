@@ -11,7 +11,7 @@
           <label>Description</label>
           <input class="form-control" id="program-submit-description"/>
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
           <label>Brain Targets</label>
           <div class="container margin-top">
             <div class="input-group float-left padding-left">
@@ -36,6 +36,40 @@
               <input type="checkbox" value="Sequencing" class="filter-checkbox" id="Sequencing-filter2"> Sequencing
             </div>
           </div>
+        </div>-->
+        <div class="program-activities-group">
+          <label>Activities</label>
+          <button class="btn btn-default add-activities-btn">Add Activities</button>
+          or
+          <button class="btn btn-default">Upload Activities</button>
+          {{#if showActivities}}
+            <div class="activity-select-modal-background"></div>
+            <div class="activity-select-modal-wrapper">
+              <div class="activity-select-modal-container">
+                <div class="activity-select-modal-title">
+                  <h5>Activities</h5>
+                  <p>
+                    Select as many Activities as you would like to add to this Program
+                  </p>
+                </div>
+                <div class="activity-select-modal-list">
+                  {{#each activities}}
+                    <!-- TODO: Activity list design -->
+                    <div class="activity-select-modal-item">
+                      {{title}}
+                    </div>
+                  {{/each}}
+                </div>
+                <div class="activity-select-modal-submit">
+                  <button class="activity-select-submit-btn btn btn-default">Done</button>
+                  <button class="activity-select-cancel-btn btn btn-danger">Cancel</button>
+                </div>
+              </div>
+            </div>
+          {{/if}}
+          {{#if uploadActivities}}
+
+          {{/if}}
         </div>
         <div class="form-group">
           <label>Tags</label>
@@ -44,11 +78,6 @@
         <div class="form-group">
           <label>Document Link</label>
           <input class="form-control" id="program-submit-document-link"/>
-        </div>
-        <div>
-          <input type="file" id="file">
-          <input type="button" value="Upload" class="upload-btn">
-          {{fileNames}}
         </div>
         <div class="form-group">
           <label>Tutorial Link</label>
