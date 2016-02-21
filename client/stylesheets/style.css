@@ -74,11 +74,20 @@ h2 {
 
 }
 
-.submitError {
+#submitError {
   color: red;
 }
 
-.activityError {
-color: red;
+#activityError {
+  color: red;
+}
 
+#submitErrorPopUp {
+  color: red;
+  padding-top: 5px;
+}
+
+#activityErrorPopUp {
+  color: red;
+  padding-top: 5px;
 }

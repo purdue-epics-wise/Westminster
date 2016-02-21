@@ -26,7 +26,7 @@ Template.activitySubmit.events({
       tutorialLink: $("#program-submit-tutorial-link").val(),
       documents: currentFileObjs.get()
     };
-    if(validateActivity(Activity)) {
+    if(validateActivity(activity)) {
       /*Do nothing*/
     } else {
       return (submitError());
@@ -133,7 +133,7 @@ var validateActivity = function(activity) {
     }
 
 var submitError = function(activity) {
-  if ($("#activityError").length) {
+  if ($("#activityErrorPopUp").length) {
     /* Do nothing */
   } else {
     var tag = document.createElement("p");
@@ -141,5 +141,6 @@ var submitError = function(activity) {
     tag.appendChild(text);
     var element = document.getElementById("activityError");
     element.appendChild(tag);
+    document.getElementById("activityError").id = "activityErrorPopUp";
     }
   }
