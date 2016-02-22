@@ -5,20 +5,17 @@
 			<div class="login-container">
 
 				<div class="container margin-top">
-					<h2 class="separate">Log In</h2>
+					<h2 class="separate">Login to Your Account</h2>
 					<form id="login-form">
-						<div class="form-group">
-							<label for="login-email">Email</label>
-							<input id="login-email" type="email" class="form-control">
-						</div>
-						<div class="form-group">
-							<label for="login-password">Password</label>
-							<input id="login-password" type="password" class="form-control">
-						</div>
+						<input id="login-email" type="email" class="auth-input" placeholder="Email">
+						<input id="login-password" type="password" class="auth-input" placeholder="Password">
 
-						<button type="submit" class="btn btn-defaul margin-bottom">Log in</button>
+						<button type="submit" class="btn auth-submit">Login</button>
 
-						<p>Don't have an account? <a href="{{ pathFor 'register' }}">Register here</a></p>
+						<a href="{{ pathFor 'register' }}">
+							<button type="button" class="btn btn-default margin-bottom auth-alt">Don't have an account? Register Here</button>
+						</a>
+						<!--<p class="auth-desc">Don't have an account? <a href="{{ pathFor 'register' }}">Register here</a></p>-->
 					</form>
 				</div>
 
