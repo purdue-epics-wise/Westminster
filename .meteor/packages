@@ -28,3 +28,4 @@ cfs:dropbox
 cfs:gridfs
 reactive-var
 cfs:ejson-file
+natestrauser:animate-css
