@@ -3,45 +3,42 @@
     <div class="container">
 
       <form>
+        <div class="col-sm-6">
         <div class="form-group">
           <label>Program Title</label>
           <input class="form-control" id="program-submit-title"/>
         </div>
         <div class="form-group">
-          <label>Description</label>
-          <input class="form-control" id="program-submit-description"/>
+          <label>Tags</label>
+          <input class="form-control" id="program-submit-tags"/>
         </div>
-        <!--<div class="form-group">
-          <label>Brain Targets</label>
-          <div class="container margin-top">
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" value="Memory" class="filter-checkbox" id="Memory-filter2"> Memory
-            </div>
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" value="Visuospartial" class="filter-checkbox" id="Visuospartial-filter2"> Visuospartial
-            </div>
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" value="Concentration" class="filter-checkbox" id="Concentration-filter2"> Concentration
-            </div>
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" value="Orientation" class="filter-checkbox" id="Orientation-filter2"> Orientation
-            </div>
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" value="Language" class="filter-checkbox" id="Language-filter2"> Language
-            </div>
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" value="Judgement" class="filter-checkbox" id="Judgement-filter2"> Judgement
-            </div>
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" value="Sequencing" class="filter-checkbox" id="Sequencing-filter2"> Sequencing
-            </div>
-          </div>
-        </div>-->
-        <div class="program-activities-group">
+        <div class="form-group">
+          <label>Document Link</label>
+          <input class="form-control" id="program-submit-document-link"/>
+        </div>
+        <div class="form-group">
+          <label>Tutorial Link</label>
+          <input class="form-control" id="program-submit-tutorial-link"/>
+        </div>
+         <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" id="program-submit-description"></textarea>  
+        </div>
+        <button type="submit" class="btn btn-default" >Submit</button>
+        <div id="submitError" >
+          <!-- Used to append error if submission is not allowed -->
+        </div>
+      </div>
+      <div class="program-activities-group">
+        <div class="col-sm-6">
           <label>Activities</label>
           <button class="btn btn-default add-activities-btn">Add Activities</button>
           or
           <button class="btn btn-default">Upload Activities</button>
+          {{#each selectedActivities}}
+            <p> Hello </p>
+          {{/each}}
+        </div>
           {{#if showActivities}}
             <div class="activity-select-modal-background"></div>
             <div class="activity-select-modal-wrapper">
@@ -70,22 +67,6 @@
           {{#if uploadActivities}}
 
           {{/if}}
-        </div>
-        <div class="form-group">
-          <label>Tags</label>
-          <input class="form-control" id="program-submit-tags"/>
-        </div>
-        <div class="form-group">
-          <label>Document Link</label>
-          <input class="form-control" id="program-submit-document-link"/>
-        </div>
-        <div class="form-group">
-          <label>Tutorial Link</label>
-          <input class="form-control" id="program-submit-tutorial-link"/>
-        </div>
-        <button type="submit" class="btn btn-default" >Submit</button>
-        <div id="submitError" >
-          <!-- Used to append error if submission is not allowed -->
         </div>
       </form>
 
