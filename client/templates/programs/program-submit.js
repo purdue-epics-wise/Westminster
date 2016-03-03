@@ -122,7 +122,7 @@ var validateProgram = function(program) {
 }
 
 var submitError = function(program) {
-  if ($("#submitError").length) {
+  if ($("#submitErrorPopUp").length) {
     /* Do nothing*/
   } else {
   var tag = document.createElement("p");
@@ -130,5 +130,6 @@ var submitError = function(program) {
   tag.appendChild(text);
   var element = document.getElementById("submitError");
   element.appendChild(tag);
+  document.getElementById("submitError").id = "submitErrorPopUp";
   }
 }

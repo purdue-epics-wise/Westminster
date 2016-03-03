@@ -1,4 +1,4 @@
-@photo-url: url("assets/background-1.jpg");
+@photo-url: url("http://www.wvwl.org/img/gallery/home-gallery-large1.jpg");//url("assets/background-1.jpg");
 
 .background-img-wrapper {
   width: 100vw;
@@ -15,11 +15,13 @@
 .background-img {
   @blur-value: 5px;
 
-  top: -(@blur-value * 2);
-  left: -(@blur-value * 2);
+  position: absolute;
+  top: -10px;//-(@blur-value * 2);
+  left: -10px;//-(@blur-value * 2);
 
-  min-height: 110%;
-  min-width: 110%;
+  min-height: calc(~"100% + 20px");
+  min-width: calc(~"100% + 20px");
+  z-index: -10;
 
   background: @photo-url no-repeat center center;
   -webkit-background-size: cover;
