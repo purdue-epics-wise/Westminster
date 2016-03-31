@@ -93,6 +93,15 @@ Template.programSubmit.helpers({
   },
   activities: function () {
     return Activities.find();
+  },
+  selectedActivities: function () {
+    if (selectedActivities.get()) {
+      return Activities.find({
+        _id: {
+          $in: selectedActivities.get()
+        }
+      });
+    }
   }
 })
 
