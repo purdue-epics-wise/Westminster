@@ -7,11 +7,11 @@
            <a class="float-right" href="{{ pathFor 'activityPage' }}">Edit</a>
           <h2>{{title}}</h2>
         </div>
-        <div class="program-description">
+        <div class="activity-description">
           <p>{{description}}</p>
         </div>
       
-        <div class="program-brain-targets col-sm-3">
+        <div class="activity-brain-targets col-sm-3">
           <h4>Brain Targets</h4>
           <ul>
             {{#each brainTargets}}
@@ -19,7 +19,7 @@
             {{/each}}
           </ul>
         </div>
-        <div class="program-tags col-sm-3">
+        <div class="activity-tags col-sm-3">
           <h4>Tags</h4>
           <ul>
             {{#each tags}}
@@ -27,13 +27,13 @@
             {{/each}}
           </ul>
         </div>
-        <div class="program-document-link col-sm-3">
+        <div class="activity-document-link col-sm-3">
           <h4>Documents</h4>
           {{#each documentRecords}}
             <a href="{{url download=true}}" target="_parent">{{name}}</a>
           {{/each}}
         </div>
-        <div class="program-tutorial-link col-sm-3">
+        <div class="activity-tutorial-link col-sm-3">
           <h4>Tutorial Link</h4>
           <a href="{{tutorialLink}}">{{tutorialLink}}</a>
         </div>
