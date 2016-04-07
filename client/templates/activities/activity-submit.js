@@ -27,7 +27,13 @@ Template.activitySubmit.events({
       documents: currentFileObjs.get()
     };
     if(validateActivity(activity)) {
-      /*Do nothing*/
+      /*Begin Backend validation*/
+      var errorCount = backendValidateActivity(activity);
+      if (errorCount === 1) {
+        return (tutLinkErrorFunc(activity));
+      } else {
+        /*Do Nothing*/
+      }
     } else {
       return (submitError());
     }
@@ -144,3 +150,26 @@ var submitError = function(activity) {
     document.getElementById("activityError").id = "activityErrorPopUp";
     }
   }
+
+var backendValidateActivity = function(activity) {
+  var errorCount = 0;
+  var normalURL = new RegExp(/^(ftp|http|https):\/\/[^ "]+$/)
+  var evaluateTutURL = document.getElementById("program-submit-tutorial-link").value;
+  if(normalURL.test(evaluateTutURL) == false) {
+    errorCount += 1;
+  }
+  /* If errorCount = 1, only Tutorial link error*/
+  return(errorCount);
+}
+
+var tutLinkErrorFunc = function(activity) {
+  if ($("#tutLinkErrorPopUp").length) {
+  } else {
+    var tag = document.createElement("p");
+    var text = document.createTextNode("Tutorial Link is not a valid URL, please check and resubmit.");
+    tag.appendChild(text);
+    var element = document.getElementById("activityTutError");
+    element.appendChild(tag);
+    document.getElementById("activityTutError").id = "tutLinkErrorPopUp";
+  }
+}
