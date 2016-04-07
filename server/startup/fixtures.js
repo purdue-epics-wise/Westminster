@@ -4,16 +4,28 @@ Meteor.startup(function () {
 
     // Insert test users
     var user1Id = Meteor.users.insert({
-      profile: { fullName: "Barack Obama" }
+      profile: {
+        fullName: "Barack Obama",
+        community: "Westminster",
+      }
     });
     var user2Id = Meteor.users.insert({
-      profile: { fullName: "Joe Mama" }
+      profile: {
+        fullName: "Joe Mama",
+        community: "Westminster",
+      }
     });
     var user3Id = Meteor.users.insert({
-      profile: { fullName: "Keegan Bruns" }
+      profile: {
+        fullName: "Keegan Bruns",
+        community: "Westminster",
+      }
     });
     var user4Id = Meteor.users.insert({
-      profile: { fullName: "Ronald McDonald" }
+      profile: {
+        fullName: "Ronald McDonald",
+        community: "Westminster",
+      }
     });
 
     // Insert test activities
@@ -23,7 +35,7 @@ Meteor.startup(function () {
         description: "A memory activity",
         brainTargets: ["Memory"],
         tags: ["TestActivity", "Test"],
-        tutorialLink: "youtube.com",
+        tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user1Id,
         created: now
@@ -33,7 +45,7 @@ Meteor.startup(function () {
         description: "A visuospartial activity",
         brainTargets: ["Visuospartial"],
         tags: ["TestActivity", "Test"],
-        tutorialLink: "youtube.com",
+        tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user2Id,
         created: now
@@ -43,7 +55,7 @@ Meteor.startup(function () {
         description: "A concentration activity",
         brainTargets: ["Concentration"],
         tags: ["TestActivity", "Test"],
-        tutorialLink: "youtube.com",
+        tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user3Id,
         created: now
@@ -53,7 +65,7 @@ Meteor.startup(function () {
         description: "A orientation activity",
         brainTargets: ["Orientation"],
         tags: ["TestActivity", "Test"],
-        tutorialLink: "youtube.com",
+        tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user4Id,
         created: now
@@ -63,7 +75,7 @@ Meteor.startup(function () {
         description: "A language activity",
         brainTargets: ["Language"],
         tags: ["TestActivity", "Test"],
-        tutorialLink: "youtube.com",
+        tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user1Id,
         created: now
@@ -73,7 +85,7 @@ Meteor.startup(function () {
         description: "A judgement activity",
         brainTargets: ["Judgement"],
         tags: ["TestActivity", "Test"],
-        tutorialLink: "youtube.com",
+        tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user2Id,
         created: now
@@ -83,7 +95,7 @@ Meteor.startup(function () {
         description: "A sequencing activity",
         brainTargets: ["Sequencing"],
         tags: ["TestActivity", "Test"],
-        tutorialLink: "youtube.com",
+        tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user3Id,
         created: now
@@ -99,7 +111,7 @@ Meteor.startup(function () {
       description: "A judgement activity",
       brainTargets: ["Judgement"],
       tags: ["TestActivity", "Test"],
-      tutorialLink: "youtube.com",
+      tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
       documents: [],
       userId: user1Id,
       created: now
@@ -109,7 +121,7 @@ Meteor.startup(function () {
       description: "A concentration activity",
       brainTargets: ["Concentration"],
       tags: ["TestActivity", "Test"],
-      tutorialLink: "youtube.com",
+      tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
       documents: [],
       userId: user3Id,
       created: now
@@ -119,7 +131,7 @@ Meteor.startup(function () {
       description: "A memory activity",
       brainTargets: ["Memory"],
       tags: ["TestActivity", "Test"],
-      tutorialLink: "youtube.com",
+      tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
       documents: [],
       userId: user2Id,
       created: now
@@ -129,7 +141,7 @@ Meteor.startup(function () {
       description: "A sequencing activity",
       brainTargets: ["Sequencing"],
       tags: ["TestActivity", "Test"],
-      tutorialLink: "youtube.com",
+      tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
       documents: [],
       userId: user1Id,
       created: now
@@ -149,8 +161,7 @@ Meteor.startup(function () {
       activityIds: [linkedActivity1Id, linkedActivity2Id, linkedActivity3Id, linkedActivity4Id],
       brainTargets: ["Memory", "Judgement", "Concentration", "Sequencing"],
       tags: ["School", "TestProgram"],
-      documentLink: "google.com",
-      tutorialLink: "youtube.com",
+      tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
       userId: user1Id,
       created: now
     }

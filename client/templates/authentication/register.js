@@ -10,7 +10,8 @@ Template.register.events({
 			email: $(e.target).find("#register-email").val(),
 			password: $(e.target).find("#register-password").val(),
 			profile: {
-				fullName: $(e.target).find("#register-full-name").val()
+				fullName: $(e.target).find("#register-full-name").val(),
+				community: $(e.target).find("#register-community").val(),
 			}
 		}, function (error) {
 			if (error) {

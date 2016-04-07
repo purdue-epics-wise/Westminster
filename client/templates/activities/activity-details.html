@@ -1,16 +1,17 @@
 <template name="activityDetails">
   <div class="page activity-details-page">
 
-    <div class="acitivty-details-wrapper">
+    <div class="acitivty-details-wrapper well well-sm">
       <div class="activity-details-container container">
-
         <div class="program-tile">
-          <h2>{{title}}</h2>
+           <a class="float-right" href="{{ pathFor 'activityPage' }}">Edit</a>
+          <h2>{{title}} <small>Owner X from community Y</small></h2>
         </div>
-        <div class="program-description separate">
+        <div class="activity-description">
           <p>{{description}}</p>
         </div>
-        <div class="program-brain-targets separate">
+      
+        <div class="activity-brain-targets col-sm-3">
           <h4>Brain Targets</h4>
           <ul>
             {{#each brainTargets}}
@@ -18,7 +19,7 @@
             {{/each}}
           </ul>
         </div>
-        <div class="program-tags separate">
+        <div class="activity-tags col-sm-3">
           <h4>Tags</h4>
           <ul>
             {{#each tags}}
@@ -26,18 +27,16 @@
             {{/each}}
           </ul>
         </div>
-        <div class="program-document-link separate">
+        <div class="activity-document-link col-sm-3">
           <h4>Documents</h4>
           {{#each documentRecords}}
-            {{name}}
-            <a class="btn btn-primary" href="{{url download=true}}" target="_parent">Download</a>
+            <a href="{{url download=true}}" target="_parent">{{name}}</a>
           {{/each}}
         </div>
-        <div class="program-tutorial-link separate">
+        <div class="activity-tutorial-link col-sm-3">
           <h4>Tutorial Link</h4>
           <a href="{{tutorialLink}}">{{tutorialLink}}</a>
         </div>
-
       </div>
     </div>
 

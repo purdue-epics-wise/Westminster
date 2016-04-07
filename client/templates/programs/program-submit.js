@@ -15,21 +15,6 @@ Template.programSubmit.events({
   "submit form": function (e) {
     e.preventDefault();
 
-    /*var filterObject = {
-        "Memory": $("#Memory-filter2").is(':checked'),
-        "Visuospartial": $("#Visuospartial-filter2").is(':checked'),
-        "Concentration": $("#Concentration-filter2").is(':checked'),
-        "Orientation": $("#Orientation-filter2").is(':checked'),
-        "Language": $("#Language-filter2").is(':checked'),
-        "Judgement": $("#Judgement-filter2").is(':checked'),
-        "Sequencing": $("#Sequencing-filter2").is(':checked')
-    };
-    var filterList = [];
-    for (filter in filterObject) {
-      if (filterObject[filter])
-        filterList.push(filter);
-    }*/
-
     var program = {
       title: $("#program-submit-title").val(),
       description: $("#program-submit-description").val(),
@@ -42,18 +27,13 @@ Template.programSubmit.events({
     if(validateProgram(program)) {
       /*If the program's frontend validation is true, then move on to specific restriction validation*/
       var errorCount = backendValidateProgram(program);
-      if (errorCount === 3) {
-        return (bothLinkErrorFunc());
-      } else if (errorCount === 2) {
-        return (docLinkErrorFunc());
-      } else if (errorCount === 1) {
-        return (tutLinkErrorFunc()); 
+      if (errorCount === 1) {
+        return (tutLinkErrorFunc());
       }
     } else {
       return (submitError());
     }
-    console.log(program);
-/*VALIDATE PROGRAM GOES HERE WEE...HAW*/
+
     Meteor.call("insertProgram", program, function (error, result) {
       if (error)
         return console.log("Could not insert program.");
@@ -117,6 +97,15 @@ Template.programSubmit.helpers({
   },
   activities: function () {
     return Activities.find();
+  },
+  selectedActivities: function () {
+    if (selectedActivities.get()) {
+      return Activities.find({
+        _id: {
+          $in: selectedActivities.get()
+        }
+      });
+    }
   }
 })
 
@@ -128,18 +117,6 @@ var validateProgram = function(program) {
     return true;
   }
 }
-
-var docLinkErrorFunc = function(program) {
-  if ($("#docLinkErrorPopUp").length) {
-   } else {
-    var tag = document.createElement("p");
-    var text = document.createTextNode("Document Link is not a valid URL, please check and resubmit.");
-    tag.appendChild(text);
-    var element = document.getElementById("docLinkError");
-    element.appendChild(tag);
-    document.getElementById("docLinkError").id = "docLinkErrorPopUp";
-   }
- }
 
 var tutLinkErrorFunc = function(program) {
   if ($("#tutLinkErrorPopUp").length) {
@@ -166,40 +143,12 @@ var submitError = function(program) {
   }
 }
 
-var bothLinkErrorFunc = function(program) {
-  /*Used if both Tutorial Link and Document Link are invalid*/
-  if ($("#tutLinkErrorPopUp").length) {
-  } else {
-    var tag = document.createElement("p");
-    var text = document.createTextNode("Tutorial Link is not a valid URL, please check and resubmit.");
-    tag.appendChild(text);
-    var element = document.getElementById("tutLinkError");
-    element.appendChild(tag);
-    document.getElementById("tutLinkError").id = "tutLinkErrorPopUp";
-  }
-  
-  if ($("#docLinkErrorPopUp").length) {
-  } else {
-    var tag = document.createElement("p");
-    var text = document.createTextNode("Document Link is not a valid URL, please check and resubmit.");
-    tag.appendChild(text);
-    var element = document.getElementById("docLinkError");
-    element.appendChild(tag);
-    document.getElementById("docLinkError").id = "docLinkErrorPopUp";
-  }
-}
-
 var backendValidateProgram = function(program) {
   var errorCount = 0;
   var normalURL = new RegExp(/^(ftp|http|https):\/\/[^ "]+$/)
-  var evaluateDocURL = document.getElementById("program-submit-document-link").value;
   var evaluateTutURL = document.getElementById("program-submit-tutorial-link").value;
   if(normalURL.test(evaluateTutURL) == false) {
     errorCount += 1;
-  }
-
-  if(normalURL.test(evaluateDocURL) == false) {
-    errorCount += 2;
   }
   /* If errorCount = 1, only Tutorial link error
   If errorCount = 2, only Document link error

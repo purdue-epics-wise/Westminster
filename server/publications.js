@@ -19,3 +19,9 @@ Meteor.publish("activityById", function (activityId) {
 Meteor.publish("activityFiles", function () {
   return ActivityFiles.find();
 });
+
+// Needs to only publish user names, communities
+// And should only be accessible on certain pages
+Meteor.publish("users", function () {
+  return Meteor.users.find();
+});
