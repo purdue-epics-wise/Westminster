@@ -5,12 +5,17 @@
       <div class="activity-details-container container">
         <div class="program-tile">
            <a class="float-right" href="{{ pathFor 'activityPage' }}">Edit</a>
-          <h2>{{title}} <small>Owner X from community Y</small></h2>
+          <h2>
+            {{title}}
+            {{#with owner}}
+              <small>Owner {{fullName}} from community {{community}}</small>
+            {{/with}}
+          </h2>
         </div>
         <div class="activity-description">
           <p>{{description}}</p>
         </div>
-      
+
         <div class="activity-brain-targets col-sm-3">
           <h4>Brain Targets</h4>
           <ul>

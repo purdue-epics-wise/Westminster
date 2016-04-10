@@ -27,14 +27,14 @@ Template.activitySubmit.events({
       documents: currentFileObjs.get()
     };
 
-    if(validateActivity(activity)) {
-      /*Begin Backend validation*/
+    /*if(validateActivity(activity)) {
+      //Begin Backend validation
       var errorCount = backendValidateActivity(activity);
       if (errorCount === 1) {
         return (tutLinkErrorFunc(activity));
       } else {
-        /*Do Nothing*/
-      }
+        //Do Nothing
+      }*/
 
     console.log(activity);
 
