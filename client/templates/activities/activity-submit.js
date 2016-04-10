@@ -26,6 +26,7 @@ Template.activitySubmit.events({
       tutorialLink: $("#program-submit-tutorial-link").val(),
       documents: currentFileObjs.get()
     };
+
     if(validateActivity(activity)) {
       /*Begin Backend validation*/
       var errorCount = backendValidateActivity(activity);
@@ -34,9 +35,6 @@ Template.activitySubmit.events({
       } else {
         /*Do Nothing*/
       }
-    } else {
-      return (submitError());
-    }
 
     console.log(activity);
 
