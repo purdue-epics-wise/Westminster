@@ -28,144 +28,113 @@ Meteor.startup(function () {
       }
     });
 
-    // Insert test activities
-    var activities = [
+    // Test Activities
+    [
       {
-        title: "Memory Activity",
-        description: "A memory activity",
-        brainTargets: ["Memory"],
+        title: "Frontal Activity",
+        description: "A Frontal activity",
+        brainTargets: ["Frontal"],
         tags: ["TestActivity", "Test"],
         tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user1Id,
-        created: now
+        created: now,
       },
       {
-        title: "Visuospartial Activity",
-        description: "A visuospartial activity",
-        brainTargets: ["Visuospartial"],
+        title: "Parietal Activity",
+        description: "A Parietal activity",
+        brainTargets: ["Parietal"],
         tags: ["TestActivity", "Test"],
         tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user2Id,
-        created: now
+        created: now,
       },
       {
-        title: "Concentration Activity",
-        description: "A concentration activity",
-        brainTargets: ["Concentration"],
+        title: "Temporal Activity",
+        description: "A Temporal activity",
+        brainTargets: ["Temporal"],
         tags: ["TestActivity", "Test"],
         tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user3Id,
-        created: now
+        created: now,
       },
       {
-        title: "Orientation Activity",
-        description: "A orientation activity",
-        brainTargets: ["Orientation"],
+        title: "Occipital Activity",
+        description: "A Occipital activity",
+        brainTargets: ["Occipital"],
         tags: ["TestActivity", "Test"],
         tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user4Id,
-        created: now
+        created: now,
       },
+    ].forEach((activity) => {
+      const tmpId = Activities.insert(activity);
+      console.log("Inserted Activity [" + tmpId + "]");
+    });
+
+    // Linked Activities
+    const linkedActivityIds = [];
+    [
       {
-        title: "Language Activity",
-        description: "A language activity",
-        brainTargets: ["Language"],
+        title: "Back to School Frontal Activity",
+        description: "A Frontal activity",
+        brainTargets: ["Frontal"],
         tags: ["TestActivity", "Test"],
         tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user1Id,
-        created: now
+        created: now,
       },
       {
-        title: "Judgement Activity",
-        description: "A judgement activity",
-        brainTargets: ["Judgement"],
-        tags: ["TestActivity", "Test"],
-        tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
-        documents: [],
-        userId: user2Id,
-        created: now
-      },
-      {
-        title: "Sequencing Activity",
-        description: "A sequencing activity",
-        brainTargets: ["Sequencing"],
+        title: "Back to School Parietal Activity",
+        description: "A Parietal activity",
+        brainTargets: ["Parietal"],
         tags: ["TestActivity", "Test"],
         tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
         documents: [],
         userId: user3Id,
-        created: now
-      }
-    ];
-    for (var i = 0; i < activities.length; i++) {
-      var tmpId = Activities.insert(activities[i]);
+        created: now,
+      },
+      {
+        title: "Back to School Temporal Activity",
+        description: "A Temporal activity",
+        brainTargets: ["Temporal"],
+        tags: ["TestActivity", "Test"],
+        tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
+        documents: [],
+        userId: user2Id,
+        created: now,
+      },
+      {
+        title: "Back to School Occipital Activity",
+        description: "A Occipital activity",
+        brainTargets: ["Occipital"],
+        tags: ["TestActivity", "Test"],
+        tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
+        documents: [],
+        userId: user1Id,
+        created: now,
+      },
+    ].forEach((activity) => {
+      const tmpId = Activities.insert(activity);
+      linkedActivityIds.push(tmpId);
       console.log("Inserted Activity [" + tmpId + "]");
-    }
+    });
 
-    var linkedActivity1 = {
-      title: "Back to School Judgement Activity",
-      description: "A judgement activity",
-      brainTargets: ["Judgement"],
-      tags: ["TestActivity", "Test"],
-      tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
-      documents: [],
-      userId: user1Id,
-      created: now
-    };
-    var linkedActivity2 = {
-      title: "Back to School Concentration Activity",
-      description: "A concentration activity",
-      brainTargets: ["Concentration"],
-      tags: ["TestActivity", "Test"],
-      tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
-      documents: [],
-      userId: user3Id,
-      created: now
-    };
-    var linkedActivity3 = {
-      title: "Back to School Memory Activity",
-      description: "A memory activity",
-      brainTargets: ["Memory"],
-      tags: ["TestActivity", "Test"],
-      tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
-      documents: [],
-      userId: user2Id,
-      created: now
-    };
-    var linkedActivity4 = {
-      title: "Back to School Sequencing Activity",
-      description: "A sequencing activity",
-      brainTargets: ["Sequencing"],
-      tags: ["TestActivity", "Test"],
-      tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
-      documents: [],
-      userId: user1Id,
-      created: now
-    };
-    var linkedActivity1Id = Activities.insert(linkedActivity1);
-    console.log("Inserted Activity [" + linkedActivity1Id + "]");
-    var linkedActivity2Id = Activities.insert(linkedActivity2);
-    console.log("Inserted Activity [" + linkedActivity2Id + "]");
-    var linkedActivity3Id = Activities.insert(linkedActivity3);
-    console.log("Inserted Activity [" + linkedActivity3Id + "]");
-    var linkedActivity4Id = Activities.insert(linkedActivity4);
-    console.log("Inserted Activity [" + linkedActivity4Id + "]");
-
-    var linkedProgram1 = {
+    const linkedProgram1 = {
       title: "Back to School",
       description: "A program containing 'back to school' themed activities",
-      activityIds: [linkedActivity1Id, linkedActivity2Id, linkedActivity3Id, linkedActivity4Id],
+      activityIds: linkedActivityIds,
       brainTargets: ["Memory", "Judgement", "Concentration", "Sequencing"],
       tags: ["School", "TestProgram"],
       tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
       userId: user1Id,
       created: now
     }
-    var tmpId = Programs.insert(linkedProgram1);
+    const tmpId = Programs.insert(linkedProgram1);
     console.log("Inserted Program [" + tmpId + "]");
   }
 });
