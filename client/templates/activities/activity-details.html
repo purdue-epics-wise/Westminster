@@ -4,13 +4,29 @@
     <div class="acitivty-details-wrapper well well-sm">
       <div class="activity-details-container container">
         <div class="program-tile">
-           <a class="float-right" href="{{ pathFor 'activityPage' }}">Edit</a>
-          <h2>{{title}} <small>Owner X from community Y</small></h2>
+          <div class="action-items">
+            <a class="float-right" href="{{ pathFor 'activityPage' }}">
+             <i class="ion-edit float-right"></i>
+           </a>
+           <i class="ion-heart float-right favorite-icon"></i>
+          </div>
+          <h2>
+            {{title}}
+            {{#with owner}}
+              <small>Created by {{fullName}} from {{community}}</small>
+            {{/with}}
+          </h2>
         </div>
         <div class="activity-description">
           <p>{{description}}</p>
         </div>
-      
+
+        <div class="activity-time col-sm-3">
+          <h4>Time</h4>
+          <ul>
+            <li>{{time}} Minute</li>
+          </ul>
+        </div>
         <div class="activity-brain-targets col-sm-3">
           <h4>Brain Targets</h4>
           <ul>
@@ -29,14 +45,17 @@
         </div>
         <div class="activity-document-link col-sm-3">
           <h4>Documents</h4>
-          {{#each documentRecords}}
-            <a href="{{url download=true}}" target="_parent">{{name}}</a>
-          {{/each}}
+          <ul>
+            {{#each documentRecords}}
+              <li><a href="{{url download=true}}" target="_parent">{{name}}</a></li>
+            {{/each}}
+          </ul>
         </div>
-        <div class="activity-tutorial-link col-sm-3">
-          <h4>Tutorial Link</h4>
-          <a href="{{tutorialLink}}">{{tutorialLink}}</a>
-        </div>
+        {{#if tutorialLink}}
+          <div class="activity-tutorial-link">
+            <iframe width="560" height="315" src="{{tutorialLink}}" frameborder="0" allowfullscreen></iframe>
+          </div>
+        {{/if}}
       </div>
     </div>
 

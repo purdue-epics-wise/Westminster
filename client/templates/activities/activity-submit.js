@@ -9,6 +9,8 @@ Template.activitySubmit.onRendered(function () {
 
   Session.set("upload-status", "No Files Uploaded");
   Session.set("documents-ready", false);
+
+  sliderInit();
 });
 
 Template.activitySubmit.events({
@@ -24,18 +26,15 @@ Template.activitySubmit.events({
       brainTargets: filterList,//$("#program-submit-brain-targets").val().replace(/\s+/g, "").split(","),
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
       tutorialLink: $("#program-submit-tutorial-link").val(),
-      documents: currentFileObjs.get()
+      documents: currentFileObjs.get(),
+      time: Number($('#time-slider').val()),
     };
+
     if(validateActivity(activity)) {
-      /*Begin Backend validation*/
       var errorCount = backendValidateActivity(activity);
       if (errorCount === 1) {
         return (tutLinkErrorFunc(activity));
-      } else {
-        /*Do Nothing*/
       }
-    } else {
-      return (submitError());
     }
 
     console.log(activity);
@@ -81,13 +80,10 @@ Template.activitySubmit.helpers({
 
 var getFilterList = function () {
   var filterObject = {
-      "Memory": $("#Memory-filter2").is(':checked'),
-      "Visuospartial": $("#Visuospartial-filter2").is(':checked'),
-      "Concentration": $("#Concentration-filter2").is(':checked'),
-      "Orientation": $("#Orientation-filter2").is(':checked'),
-      "Language": $("#Language-filter2").is(':checked'),
-      "Judgement": $("#Judgement-filter2").is(':checked'),
-      "Sequencing": $("#Sequencing-filter2").is(':checked')
+    "Frontal": $("#Frontal-filter").is(':checked'),
+    "Parietal": $("#Parietal-filter").is(':checked'),
+    "Temporal": $("#Temporal-filter").is(':checked'),
+    "Occipital": $("#Occipital-filter").is(':checked'),
   };
   var filterList = [];
   for (filter in filterObject) {
@@ -97,6 +93,22 @@ var getFilterList = function () {
 
   return filterList;
 };
+
+function sliderInit() {
+  const slider = $('#time-slider').noUiSlider({
+    start: 0.5,
+    step: 0.25,
+    range: {
+      min: 0.5,
+      max: 3,
+    },
+  });
+
+  $('#current-time').text('0.5 Minutes');
+  slider.on('slide', (e) => {
+    $('#current-time').text(`${$(e.target).val()} Minutes`);
+  });
+}
 
 var uploadFiles = function () {
   var files = currentFiles.get();
@@ -163,7 +175,8 @@ var backendValidateActivity = function(activity) {
 }
 
 var tutLinkErrorFunc = function(activity) {
-  if ($("#tutLinkErrorPopUp").length) {
+  // Optional field now
+  /*if ($("#tutLinkErrorPopUp").length) {
   } else {
     var tag = document.createElement("p");
     var text = document.createTextNode("Tutorial Link is not a valid URL, please check and resubmit.");
@@ -171,5 +184,5 @@ var tutLinkErrorFunc = function(activity) {
     var element = document.getElementById("activityTutError");
     element.appendChild(tag);
     document.getElementById("activityTutError").id = "tutLinkErrorPopUp";
-  }
+  }*/
 }

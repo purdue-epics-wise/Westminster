@@ -1,3 +1,11 @@
+const activityIds = new ReactiveVar();
+
+Template.programDetails.onRendered(() => {
+  Tracker.autorun(() => {
+    if (this.activityIds) activityIds.set(this.activityIds);
+  });
+});
+
 Template.programDetails.helpers({
   owner() {
     const user = Meteor.users.findOne({
@@ -6,13 +14,10 @@ Template.programDetails.helpers({
     return user && user.profile;
   },
   activities() {
-    if (this.activityIds) {
-      const activities = Activities.find({
-        _id: {
-          $in: this.activityIds,
-        },
-      });
-      return activities || [];
-    }
+    return this.activityIds && Activities.find({
+      _id: {
+        $in: this.activityIds,
+      },
+    }) || [];
   }
 });
