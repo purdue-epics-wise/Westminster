@@ -54,6 +54,7 @@ fastclick@1.0.10
 fourseven:scss@3.4.1
 geojson-utils@1.0.7
 hashwin:ionic-sass@0.3.3
+hashwin:ionicons-sass@0.1.9
 hot-code-push@1.0.3
 html-tools@1.0.8
 htmljs@1.0.8

@@ -1,4 +1,3 @@
-
 Template.activityList.onCreated(function () {
   Session.set("query-filter", [
     "Frontal", "Parietal", "Temporal", "Occipital",
@@ -7,10 +6,10 @@ Template.activityList.onCreated(function () {
 
   Template.activityList.onRendered(function () {
   var filterObject = {
-      "Frontal": $("#Frontal-filter").is(':checked'),
-      "Parietal": $("#Parietal-filter").is(':checked'),
-      "Temporal": $("#Temporal-filter").is(':checked'),
-      "Occipital": $("#Occipital-filter").is(':checked'),
+    "Frontal": $("#Frontal-filter").is(':checked'),
+    "Parietal": $("#Parietal-filter").is(':checked'),
+    "Temporal": $("#Temporal-filter").is(':checked'),
+    "Occipital": $("#Occipital-filter").is(':checked'),
   };
   var filterList = [];
   for (filter in filterObject) {
@@ -24,7 +23,10 @@ Template.activityList.helpers({
     return Activities.find({
       brainTargets: { $in: Session.get("query-filter") }
     });
-  }
+  },
+  activityIndex() {
+    return ActivityIndex;
+  },
 });
 
 Template.activityList.events({
@@ -32,10 +34,10 @@ Template.activityList.events({
     e.preventDefault();
 
     var filterObject = {
-        "Frontal": $("#Frontal-filter").is(':checked'),
-        "Parietal": $("#Parietal-filter").is(':checked'),
-        "Temporal": $("#Temporal-filter").is(':checked'),
-        "Occipital": $("#Occipital-filter").is(':checked'),
+      "Frontal": $("#Frontal-filter").is(':checked'),
+      "Parietal": $("#Parietal-filter").is(':checked'),
+      "Temporal": $("#Temporal-filter").is(':checked'),
+      "Occipital": $("#Occipital-filter").is(':checked'),
     };
     var filterList = [];
     for (filter in filterObject) {
