@@ -76,7 +76,7 @@ Meteor.startup(function () {
       },
     ].forEach((activity) => {
       tmpId = Activities.insert(activity);
-      documentActivityIds.push(activity);
+      documentActivityIds.push(tmpId);
       console.log("Inserted Activity [" + tmpId + "]");
     });
 
@@ -88,7 +88,8 @@ Meteor.startup(function () {
       tags: ["School", "TestProgram"],
       tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
       userId: user1Id,
-      created: now
+      created: now,
+      time: 3.75,
     }
     tmpId = Programs.insert(documentProgram1);
     console.log("Inserted Document Program [" + tmpId + "]");
@@ -213,7 +214,8 @@ Meteor.startup(function () {
       tags: ["School", "TestProgram"],
       tutorialLink: "https://www.youtube.com/embed/kMhw5MFYU0s",
       userId: user1Id,
-      created: now
+      created: now,
+      time: 7.3,
     }
     tmpId = Programs.insert(linkedProgram1);
     console.log("Inserted Linked Program [" + tmpId + "]");

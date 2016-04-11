@@ -7,13 +7,10 @@ Template.programList.onCreated(function () {
 
   Template.programList.onRendered(function () {
   var filterObject = {
-      "Memory": $("#Memory-filter").is(':checked'),
-      "Visuospartial": $("#Visuospartial-filter").is(':checked'),
-      "Concentration": $("#Concentration-filter").is(':checked'),
-      "Orientation": $("#Orientation-filter").is(':checked'),
-      "Language": $("#Language-filter").is(':checked'),
-      "Judgement": $("#Judgement-filter").is(':checked'),
-      "Sequencing": $("#Sequencing-filter").is(':checked')
+      "Frontal": $("#Frontal-filter").is(':checked'),
+      "Parietal": $("#Parietal-filter").is(':checked'),
+      "Temporal": $("#Temporal-filter").is(':checked'),
+      "Occipital": $("#Occipital-filter").is(':checked'),
   };
   var filterList = [];
   for (filter in filterObject) {
@@ -35,13 +32,10 @@ Template.programList.events({
     e.preventDefault();
 
     var filterObject = {
-        "Memory": $("#Memory-filter").is(':checked'),
-        "Visuospartial": $("#Visuospartial-filter").is(':checked'),
-        "Concentration": $("#Concentration-filter").is(':checked'),
-        "Orientation": $("#Orientation-filter").is(':checked'),
-        "Language": $("#Language-filter").is(':checked'),
-        "Judgement": $("#Judgement-filter").is(':checked'),
-        "Sequencing": $("#Sequencing-filter").is(':checked')
+        "Frontal": $("#Frontal-filter").is(':checked'),
+      "Parietal": $("#Parietal-filter").is(':checked'),
+      "Temporal": $("#Temporal-filter").is(':checked'),
+      "Occipital": $("#Occipital-filter").is(':checked'),
     };
     var filterList = [];
     for (filter in filterObject) {
