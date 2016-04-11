@@ -1,11 +1,11 @@
 <template name="activityList">
   <div class="page activity-list-page">
-    <div class="filter-search-container">
+    <div class="filter-search-container container">
   	 <div class="filter-container container margin-top">
         <div class="filter-container-title float-left">
           <h4>Brain Targets</h4>
         </div>
-        <div class="container margin-top">
+        <div class="margin-top">
           <div class="input-group float-left padding-left">
             <input type="checkbox" checked="true" value="Frontal" class="filter-checkbox" id="Frontal-filter"> Frontal
           </div>
@@ -21,7 +21,8 @@
         </div>
       </div>
 
-      <div class="activity-search container">
+      <div class="activity-search container margin-top">
+        <h4>Search</h4>
         {{> EasySearch.Input index=activityIndex}}
       </div>
     </div>
