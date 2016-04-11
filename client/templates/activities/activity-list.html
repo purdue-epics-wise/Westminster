@@ -1,22 +1,29 @@
 <template name="activityList">
   <div class="page activity-list-page">
-  	<div class="filter-container container margin-top">
-      <div class="filter-container-title float-left">
-        <h4>Filters</h4>
+    <div class="filter-search-container container">
+  	 <div class="filter-container container margin-top">
+        <div class="filter-container-title float-left">
+          <h4>Brain Targets</h4>
+        </div>
+        <div class="margin-top">
+          <div class="input-group float-left padding-left">
+            <input type="checkbox" checked="true" value="Frontal" class="filter-checkbox" id="Frontal-filter"> Frontal
+          </div>
+          <div class="input-group float-left padding-left">
+            <input type="checkbox" checked="true" value="Parietal" class="filter-checkbox" id="Parietal-filter"> Parietal
+          </div>
+          <div class="input-group float-left padding-left">
+            <input type="checkbox" checked="true" value="Temporal" class="filter-checkbox" id="Temporal-filter"> Temporal
+          </div>
+          <div class="input-group float-left padding-left">
+            <input type="checkbox" checked="true" value="Occipital" class="filter-checkbox" id="Occipital-filter"> Occipital
+          </div>
+        </div>
       </div>
-      <div class="container margin-top">
-        <div class="input-group float-left padding-left">
-          <input type="checkbox" checked="true" value="Frontal" class="filter-checkbox" id="Frontal-filter"> Frontal
-        </div>
-        <div class="input-group float-left padding-left">
-          <input type="checkbox" checked="true" value="Parietal" class="filter-checkbox" id="Parietal-filter"> Parietal
-        </div>
-        <div class="input-group float-left padding-left">
-          <input type="checkbox" checked="true" value="Temporal" class="filter-checkbox" id="Temporal-filter"> Temporal
-        </div>
-        <div class="input-group float-left padding-left">
-          <input type="checkbox" checked="true" value="Occipital" class="filter-checkbox" id="Occipital-filter"> Occipital
-        </div>
+
+      <div class="activity-search container margin-top">
+        <h4>Search</h4>
+        {{> EasySearch.Input index=activityIndex}}
       </div>
     </div>
 
@@ -24,9 +31,15 @@
 	    <div class="activity-list-wrapper">
 	    	<h2>Activities</h2>
 	      <div class="activity-list-container">
-	        {{#each activities}}
-	          {{> activityItem}}
-	        {{/each}}
+          {{#EasySearch.IfInputEmpty index=activityIndex}}
+            {{#each activities}}
+              {{> activityItem}}
+            {{/each}}
+          {{else}}
+            {{#EasySearch.Each index=activityIndex}}
+              {{> activityItem}}
+            {{/EasySearch.Each}}
+          {{/EasySearch.IfInputEmpty}}
 	      </div>
   		</div>
     </div>
