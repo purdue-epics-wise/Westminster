@@ -33,5 +33,5 @@ standard-minifier-css
 standard-minifier-js
 ecmascript
 rcy:nouislider
-meteoric:ionicons-sass
 underscore
+hashwin:ionic-sass
