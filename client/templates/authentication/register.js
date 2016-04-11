@@ -12,6 +12,8 @@ Template.register.events({
 			profile: {
 				fullName: $(e.target).find("#register-full-name").val(),
 				community: $(e.target).find("#register-community").val(),
+				favoriteActivities: [],
+				favoritePrograms: [],
 			}
 		}, function (error) {
 			if (error) {

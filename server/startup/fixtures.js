@@ -39,6 +39,7 @@ Meteor.startup(function () {
         documents: [],
         userId: user1Id,
         created: now,
+        time: 1.5,
       },
       {
         title: "Parietal Activity",
@@ -49,6 +50,7 @@ Meteor.startup(function () {
         documents: [],
         userId: user2Id,
         created: now,
+        time: 2.6,
       },
       {
         title: "Temporal Activity",
@@ -59,6 +61,7 @@ Meteor.startup(function () {
         documents: [],
         userId: user3Id,
         created: now,
+        time: 0.6,
       },
       {
         title: "Occipital Activity",
@@ -69,6 +72,7 @@ Meteor.startup(function () {
         documents: [],
         userId: user4Id,
         created: now,
+        time: 3,
       },
     ].forEach((activity) => {
       const tmpId = Activities.insert(activity);
@@ -87,6 +91,7 @@ Meteor.startup(function () {
         documents: [],
         userId: user1Id,
         created: now,
+        time: 1.2,
       },
       {
         title: "Back to School Parietal Activity",
@@ -97,6 +102,7 @@ Meteor.startup(function () {
         documents: [],
         userId: user3Id,
         created: now,
+        time: 3,
       },
       {
         title: "Back to School Temporal Activity",
@@ -107,6 +113,7 @@ Meteor.startup(function () {
         documents: [],
         userId: user2Id,
         created: now,
+        time: 1.5,
       },
       {
         title: "Back to School Occipital Activity",
@@ -117,6 +124,7 @@ Meteor.startup(function () {
         documents: [],
         userId: user1Id,
         created: now,
+        time: 2.6,
       },
     ].forEach((activity) => {
       const tmpId = Activities.insert(activity);
