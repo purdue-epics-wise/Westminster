@@ -1,0 +1,16 @@
+<template name="activityFavorites">
+  <div class="page page-activity-favorites container">
+
+  <div class="activities-container container" style="padding-bottom: 120px;">
+    <div class="activity-list-wrapper">
+      <h2>Favorite Activities</h2>
+      <div class="activity-list-container">
+        {{#each activities}}
+          {{> activityItem}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  </div>
+</template>

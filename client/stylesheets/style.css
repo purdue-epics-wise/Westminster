@@ -73,3 +73,31 @@ h2 {
 .program-description {
 
 }
+
+#submitError {
+  color: red;
+}
+
+#activityError {
+  color: red;
+}
+
+#submitErrorPopUp {
+  color: red;
+  padding-top: 5px;
+}
+
+#activityErrorPopUp {
+  color: red;
+  padding-top: 5px;
+}
+
+#docLinkErrorPopUp {
+  color: red;
+  padding-top: 5px;
+}
+
+#tutLinkErrorPopUp {
+  color: red;
+  padding-top: 5px;
+}

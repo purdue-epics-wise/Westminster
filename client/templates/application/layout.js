@@ -11,3 +11,10 @@ Template.layout.events({
 		});
   }
 });
+
+Template.layout.helpers({
+  showBackground: function () {
+    var currentRoute = Router.current().route.getName();
+    return currentRoute == "login" || currentRoute == "register";
+  }
+})

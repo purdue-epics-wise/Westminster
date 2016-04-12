@@ -2,7 +2,66 @@
   <div class="page activity-submit-page">
 
     <div class="activity-submit-wrapper">
-      <div class="activity-submit-container">
+      <div class="activity-submit-container container">
+
+        <form>
+          <div class="col-sm-6">
+            <div class="form-group">
+             <label>Activity Title</label>
+             <input class="form-control" id="program-submit-title"/>
+           </div>
+           <div class="form-group">
+             <label>Tags</label>
+             <input class="form-control" id="program-submit-tags"/>
+           </div>
+           <div class="form-group">
+             <label>Tutorial Link <small>(optional)</small></label>
+             <input class="form-control" id="program-submit-tutorial-link"/>
+             <div id="activityTutError">
+           </div>
+           </div>
+           <div class="form-group">
+             <label>Description</label>
+             <textarea class="form-control" id="program-submit-description"></textarea>
+           </div>
+           <button type="submit" class="btn btn-default" >Submit</button>
+          <div id="activityError">
+            <!--If empty field, warning appends here -->
+          </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-6">
+              <label>Brain Targets</label>
+              <div class="container margin-top">
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Frontal" class="filter-checkbox" id="Frontal-filter"> Frontal
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Parietal" class="filter-checkbox" id="Parietal-filter"> Parietal
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Temporal" class="filter-checkbox" id="Temporal-filter"> Temporal
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Occipital" class="filter-checkbox" id="Occipital-filter"> Occipital
+                </div>
+              </div>
+              <div class="activity-time">
+                <label>Time</label>
+                <p id="current-time"></p>
+                <div class="slider" id="time-slider"></div>
+              </div>
+              <div class="file-upload-container">
+                <label>Documents</label>
+                <input type="file" multiple name="..." class="activity-file-input"/>
+                <p class="upload-status-label">{{uploadStatus}}</p>
+                {{#each fileNames}}
+                  <p>{{.}}</p>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </form>
 
       </div>
     </div>
