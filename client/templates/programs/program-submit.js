@@ -25,7 +25,11 @@ Template.programSubmit.events({
     };
     
     if(validateProgram(program)) {
-      /*Do nothing*/
+      /*If the program's frontend validation is true, then move on to specific restriction validation*/
+      var errorCount = backendValidateProgram(program);
+      if (errorCount === 1) {
+        return (tutLinkErrorFunc());
+      }
     } else {
       return (submitError());
     }
@@ -114,15 +118,40 @@ var validateProgram = function(program) {
   }
 }
 
+var tutLinkErrorFunc = function(program) {
+  if ($("#tutLinkErrorPopUp").length) {
+  } else {
+    var tag = document.createElement("p");
+    var text = document.createTextNode("Tutorial Link is not a valid URL, please check and resubmit.");
+    tag.appendChild(text);
+    var element = document.getElementById("tutLinkError");
+    element.appendChild(tag);
+    document.getElementById("tutLinkError").id = "tutLinkErrorPopUp";
+  }
+}
+
 var submitError = function(program) {
   if ($("#submitErrorPopUp").length) {
     /* Do nothing*/
   } else {
   var tag = document.createElement("p");
-  var text = document.createTextNode("One or more fields may be empty, please check and resubmit.");
+  var text = document.createTextNode("One or more fields have invalid data, please check and resubmit.");
   tag.appendChild(text);
   var element = document.getElementById("submitError");
   element.appendChild(tag);
   document.getElementById("submitError").id = "submitErrorPopUp";
   }
+}
+
+var backendValidateProgram = function(program) {
+  var errorCount = 0;
+  var normalURL = new RegExp(/^(ftp|http|https):\/\/[^ "]+$/)
+  var evaluateTutURL = document.getElementById("program-submit-tutorial-link").value;
+  if(normalURL.test(evaluateTutURL) == false) {
+    errorCount += 1;
+  }
+  /* If errorCount = 1, only Tutorial link error
+  If errorCount = 2, only Document link error
+  If errorCount = 3, both Tutorial and Document link error */
+  return(errorCount);
 }

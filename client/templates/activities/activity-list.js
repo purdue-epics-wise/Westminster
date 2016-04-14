@@ -1,20 +1,15 @@
-
 Template.activityList.onCreated(function () {
   Session.set("query-filter", [
-    "Memory", "Visuospartial", "Concentration",
-    "Orientation", "Language", "Judgement", "Sequencing"
+    "Frontal", "Parietal", "Temporal", "Occipital",
   ]);
 });
 
   Template.activityList.onRendered(function () {
   var filterObject = {
-      "Memory": $("#Memory-filter").is(':checked'),
-      "Visuospartial": $("#Visuospartial-filter").is(':checked'),
-      "Concentration": $("#Concentration-filter").is(':checked'),
-      "Orientation": $("#Orientation-filter").is(':checked'),
-      "Language": $("#Language-filter").is(':checked'),
-      "Judgement": $("#Judgement-filter").is(':checked'),
-      "Sequencing": $("#Sequencing-filter").is(':checked')
+    "Frontal": $("#Frontal-filter").is(':checked'),
+    "Parietal": $("#Parietal-filter").is(':checked'),
+    "Temporal": $("#Temporal-filter").is(':checked'),
+    "Occipital": $("#Occipital-filter").is(':checked'),
   };
   var filterList = [];
   for (filter in filterObject) {
@@ -28,7 +23,10 @@ Template.activityList.helpers({
     return Activities.find({
       brainTargets: { $in: Session.get("query-filter") }
     });
-  }
+  },
+  activityIndex() {
+    return ActivityIndex;
+  },
 });
 
 Template.activityList.events({
@@ -36,13 +34,10 @@ Template.activityList.events({
     e.preventDefault();
 
     var filterObject = {
-        "Memory": $("#Memory-filter").is(':checked'),
-        "Visuospartial": $("#Visuospartial-filter").is(':checked'),
-        "Concentration": $("#Concentration-filter").is(':checked'),
-        "Orientation": $("#Orientation-filter").is(':checked'),
-        "Language": $("#Language-filter").is(':checked'),
-        "Judgement": $("#Judgement-filter").is(':checked'),
-        "Sequencing": $("#Sequencing-filter").is(':checked')
+      "Frontal": $("#Frontal-filter").is(':checked'),
+      "Parietal": $("#Parietal-filter").is(':checked'),
+      "Temporal": $("#Temporal-filter").is(':checked'),
+      "Occipital": $("#Occipital-filter").is(':checked'),
     };
     var filterList = [];
     for (filter in filterObject) {

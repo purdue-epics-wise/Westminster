@@ -91,3 +91,13 @@ h2 {
   color: red;
   padding-top: 5px;
 }
+
+#docLinkErrorPopUp {
+  color: red;
+  padding-top: 5px;
+}
+
+#tutLinkErrorPopUp {
+  color: red;
+  padding-top: 5px;
+}

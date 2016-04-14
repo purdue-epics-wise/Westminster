@@ -33,14 +33,16 @@
         <h4>Activities</h4>
         {{#each activities}}
           <div class="program-activity-item">
-            {{title}}
+            <a href="{{ pathFor 'activityDetails' _id=this._id }}">{{title}}</a>
           </div>
         {{/each}}
       </div>
-      <div class="program-tutorial-link separate">
-        <h4>Tutorial</h4>
-        <iframe width="560" height="315" src="{{tutorialLink}}" frameborder="0" allowfullscreen></iframe>
-      </div>
+      {{#if tutorialLink}}
+        <div class="program-tutorial-link separate">
+          <h4>Tutorial</h4>
+          <iframe width="560" height="315" src="{{tutorialLink}}" frameborder="0" allowfullscreen></iframe>
+        </div>
+      {{/if}}
     </div>
   </div>
 </template>

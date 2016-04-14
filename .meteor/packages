@@ -7,7 +7,6 @@
 accounts-password
 iron:router
 accounts-ui
-standard-minifiers
 meteor-base
 mobile-experience
 mongo
@@ -30,3 +29,12 @@ reactive-var
 cfs:ejson-file
 natestrauser:animate-css
 sacha:spin
+standard-minifier-css
+standard-minifier-js
+ecmascript
+rcy:nouislider
+underscore
+hashwin:ionic-sass
+easy:search
+hashwin:ionicons-sass
+fourseven:scss
