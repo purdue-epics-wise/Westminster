@@ -4,55 +4,69 @@
     <div class="activity-page-wrapper">
       <div class="activity-page-container container">
 
-        <form>
-          <div class="form-group">
-            <label>Activity Title</label>
-            <input class="form-control" id="program-submit-title" value="{{title}}"/>
+<form>
+          <div class="col-sm-6">
+            <div class="form-group">
+             <label>Activity Title</label>
+             <input class="form-control" id="activity-submit-title" value="{{title}}"/>
+           </div>
+           <div class="form-group">
+             <label>Tags</label>
+             <input class="form-control" id="activity-submit-tags" value="{{tags}}"/>
+           </div>
+           <div class="form-group">
+             <label>Tutorial Link <small>(optional)</small></label>
+             <input class="form-control" id="activity-submit-tutorial-link" value="{{tutorialLink}}"/>
+             <div id="activityTutError">
+           </div>
+           </div>
+           <div class="form-group">
+             <label>Description</label>
+             <textarea class="form-control" id="activity-submit-description" value="{{description}}"></textarea>
+           </div>
+           <button type="submit" class="btn btn-default" >Submit</button>
+           <button type="button" class="btn btn-danger delete-btn">Delete</button>
+          <div id="activityError">
+            <!--If empty field, warning appends here -->
+          </div>
           </div>
           <div class="form-group">
-            <label>Description</label>
-            <input class="form-control" id="program-submit-description" value="{{description}}"/>
-          </div>
-          <div class="form-group">
-            <label>Brain Targets</label>
-            <div class="container margin-top">
-              <div class="input-group float-left padding-left">
-                <input type="checkbox" checked="{{memoryChecked}}" value="Memory" class="filter-checkbox" id="Memory-filter3"> Memory
+            <div class="col-sm-6">
+              <label>Brain Targets</label>
+              <div class="container margin-top">
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Frontal" class="filter-checkbox" id="Frontal-filter" checked="{{frontalChecked}}"> Frontal
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Parietal" class="filter-checkbox" id="Parietal-filter" checked="{{parietalChecked}}"> Parietal
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Temporal" class="filter-checkbox" id="Temporal-filter" checked="{{temporalChecked}}"> Temporal
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Occipital" class="filter-checkbox" id="Occipital-filter" checked="{{occipitalChecked}}"> Occipital
+                </div>
               </div>
-              <div class="input-group float-left padding-left">
-                <input type="checkbox" checked="{{visuospartialChecked}}" value="Visuospartial" class="filter-checkbox" id="Visuospartial-filter3"> Visuospartial
+              <div class="activity-time">
+                <label>Time</label>
+                <p id="current-time"></p>
+                <div class="slider" id="time-slider"></div>
               </div>
-              <div class="input-group float-left padding-left">
-                <input type="checkbox" checked="{{concentrationChecked}}" value="Concentration" class="filter-checkbox" id="Concentration-filter3"> Concentration
-              </div>
-              <div class="input-group float-left padding-left">
-                <input type="checkbox" checked="{{orientationChecked}}" value="Orientation" class="filter-checkbox" id="Orientation-filter3"> Orientation
-              </div>
-              <div class="input-group float-left padding-left">
-                <input type="checkbox" checked="{{languageChecked}}" value="Language" class="filter-checkbox" id="Language-filter3"> Language
-              </div>
-              <div class="input-group float-left padding-left">
-                <input type="checkbox" checked="{{judgementChecked}}" value="Judgement" class="filter-checkbox" id="Judgement-filter3"> Judgement
-              </div>
-              <div class="input-group float-left padding-left">
-                <input type="checkbox" checked="{{sequencingChecked}}" value="Sequencing" class="filter-checkbox" id="Sequencing-filter3"> Sequencing
+              <div class="file-upload-container">
+                <label>Documents</label>
+                <input type="file" multiple name="..." class="activity-file-input"/>
+                <ul>
+                  {{#each documentRecords}}
+                    <li><a href="{{url download=true}}" target="_parent">{{name}}</a></li>
+                  {{/each}}
+                </ul>
+                <p class="upload-status-label">{{uploadStatus}}</p>
+                {{#each fileNames}}
+                  <p>{{.}}</p>
+                {{/each}}
               </div>
             </div>
           </div>
-          <div class="form-group">
-            <label>Tags</label>
-            <input class="form-control" id="program-submit-tags" value="{{tags}}"/>
-          </div>
-          <div class="form-group">
-            <label>Document Link</label>
-            <input class="form-control" id="program-submit-document-link" value="{{documentLink}}"/>
-          </div>
-          <div class="form-group">
-            <label>Tutorial Link</label>
-            <input class="form-control" id="program-submit-tutorial-link" value="{{tutorialLink}}"/>
-          </div>
-          <button type="submit" class="btn btn-default" >Submit</button>
-          <button type="button" class="btn btn-danger delete-btn">Delete</button>
         </form>
 
       </div>
