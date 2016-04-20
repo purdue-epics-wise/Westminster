@@ -1,31 +1,34 @@
 <template name="activityList">
   <div class="page activity-list-page">
-    <div class="filter-search-container container">
-  	 <div class="filter-container container margin-top">
-        <div class="filter-container-title float-left">
-          <h4>Brain Targets</h4>
+    <div class="container">
+      <div class="filter-search-container">
+       <div class="filter-container container margin-top">
+          <div class="filter-container-title float-left">
+            <h4>Brain Targets</h4>
+          </div>
+          <div class="margin-top">
+            <div class="input-group float-left padding-left">
+              <input type="checkbox" checked="true" value="Frontal" class="filter-checkbox" id="Frontal-filter"> Frontal
+            </div>
+            <div class="input-group float-left padding-left">
+              <input type="checkbox" checked="true" value="Parietal" class="filter-checkbox" id="Parietal-filter"> Parietal
+            </div>
+            <div class="input-group float-left padding-left">
+              <input type="checkbox" checked="true" value="Temporal" class="filter-checkbox" id="Temporal-filter"> Temporal
+            </div>
+            <div class="input-group float-left padding-left">
+              <input type="checkbox" checked="true" value="Occipital" class="filter-checkbox" id="Occipital-filter"> Occipital
+            </div>
+          </div>
         </div>
-        <div class="margin-top">
-          <div class="input-group float-left padding-left">
-            <input type="checkbox" checked="true" value="Frontal" class="filter-checkbox" id="Frontal-filter"> Frontal
-          </div>
-          <div class="input-group float-left padding-left">
-            <input type="checkbox" checked="true" value="Parietal" class="filter-checkbox" id="Parietal-filter"> Parietal
-          </div>
-          <div class="input-group float-left padding-left">
-            <input type="checkbox" checked="true" value="Temporal" class="filter-checkbox" id="Temporal-filter"> Temporal
-          </div>
-          <div class="input-group float-left padding-left">
-            <input type="checkbox" checked="true" value="Occipital" class="filter-checkbox" id="Occipital-filter"> Occipital
-          </div>
-        </div>
-      </div>
 
-      <div class="activity-search container margin-top">
-        <h4>Search</h4>
-        {{> EasySearch.Input index=activityIndex}}
+        <div class="activity-search container margin-top">
+          <h4>Search</h4>
+          {{> EasySearch.Input index=activityIndex}}
+        </div>
       </div>
     </div>
+
 
   	<div class="activities-container container" style="padding-bottom: 120px;">
 	    <div class="activity-list-wrapper">
