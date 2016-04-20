@@ -8,7 +8,11 @@
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/">Westminster</a>
+          {{#if currentUser}}
+            <a class="navbar-brand" href="{{ pathFor 'programList' }}">Westminster</a>
+          {{else}}
+            <a class="navbar-brand" href="/">Westminster</a>
+          {{/if}}
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -37,20 +41,14 @@
             {{/if}}
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ pathFor 'faq' }}">FAQs</a></li>
-            {{#if currentUser}}
-              <!--<li class="search">
-                <form class="navbar-form navbar-right" role="search">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                  <button type="submit" class="btn btn-default">Search</button>
-                </form>
-              </li>-->
-              <li><a id="logout-button" href="#" >Logout</a></li>
-            {{else}}
-              <li><a href="{{ pathFor 'login' }}">Login</a></li>
-              <li><a href="{{ pathFor 'register' }}">Register</a></li>
+            {{#if showLinks}}
+              <li><a href="{{ pathFor 'faq' }}">FAQs</a></li>
+              {{#if currentUser}}
+                <li><a id="logout-button" href="#" >Logout</a></li>
+              {{else}}
+                <li><a href="{{ pathFor 'login' }}">Login</a></li>
+                <li><a href="{{ pathFor 'register' }}">Register</a></li>
+              {{/if}}
             {{/if}}
           </ul>
         </div>

@@ -1,21 +1,30 @@
 <template name="programList">
   <div class="page page-program-list">
-    <div class="filter-container container margin-top">
-      <div class="filter-container-title float-left">
-        <h4>Filters</h4>
-      </div>
-      <div class="container margin-top">
-        <div class="input-group float-left padding-left">
-          <input type="checkbox" checked="true" value="Frontal" class="filter-checkbox" id="Frontal-filter"> Frontal
+    <div class="container">
+      <div class="filter-search-container-programs">
+        <div class="filter-container container margin-top">
+          <div class="filter-container-title float-left">
+            <h4>Brain Targets</h4>
+          </div>
+          <div class="margin-top">
+            <div class="input-group float-left padding-left">
+              <input type="checkbox" checked="true" value="Frontal" class="filter-checkbox" id="Frontal-filter"> Frontal
+            </div>
+            <div class="input-group float-left padding-left">
+              <input type="checkbox" checked="true" value="Parietal" class="filter-checkbox" id="Parietal-filter"> Parietal
+            </div>
+            <div class="input-group float-left padding-left">
+              <input type="checkbox" checked="true" value="Temporal" class="filter-checkbox" id="Temporal-filter"> Temporal
+            </div>
+            <div class="input-group float-left padding-left">
+              <input type="checkbox" checked="true" value="Occipital" class="filter-checkbox" id="Occipital-filter"> Occipital
+            </div>
+          </div>
         </div>
-        <div class="input-group float-left padding-left">
-          <input type="checkbox" checked="true" value="Parietal" class="filter-checkbox" id="Parietal-filter"> Parietal
-        </div>
-        <div class="input-group float-left padding-left">
-          <input type="checkbox" checked="true" value="Temporal" class="filter-checkbox" id="Temporal-filter"> Temporal
-        </div>
-        <div class="input-group float-left padding-left">
-          <input type="checkbox" checked="true" value="Occipital" class="filter-checkbox" id="Occipital-filter"> Occipital
+
+        <div class="program-search container margin-top">
+          <h4>Search</h4>
+          {{> EasySearch.Input index=programIndex}}
         </div>
       </div>
     </div>
@@ -25,9 +34,15 @@
         <h2>Programs</h2>
       </div>
       <div class="program-list">
-        {{#each programs}}
-          {{> programItem}}
-        {{/each}}
+        {{#EasySearch.IfInputEmpty index=programIndex}}
+            {{#each programs}}
+              {{> programItem}}
+            {{/each}}
+          {{else}}
+            {{#EasySearch.Each index=programIndex}}
+              {{> programItem}}
+            {{/EasySearch.Each}}
+          {{/EasySearch.IfInputEmpty}}
       </div>
     </div>
   </div>
