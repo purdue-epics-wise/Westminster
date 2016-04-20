@@ -1,23 +1,26 @@
 <template name="welcome">
   <div class="page page-welcome container">
 
-  <div class="container navigation-items">
-    <a href="{{ pathFor 'login' }}">
-      <div class="navigation-item">
-        Login
+    <div class="welcome-wrapper">
+      <div class="welcome-background"></div>
+      <div class="container navigation-items">
+        <a href="{{ pathFor 'login' }}">
+          <div class="navigation-item">
+            Login
+          </div>
+        </a>
+        <a href="{{ pathFor 'register' }}">
+          <div class="navigation-item">
+            Register
+          </div>
+        </a>
+        <a href="{{ pathFor 'faq' }}">
+          <div class="navigation-item">
+            FAQs
+          </div>
+        </a>
       </div>
-    </a>
-    <a href="{{ pathFor 'register' }}">
-      <div class="navigation-item">
-        Register
-      </div>
-    </a>
-    <a href="{{ pathFor 'faq' }}">
-      <div class="navigation-item">
-        FAQs
-      </div>
-    </a>
-  </div>
+    </div>
 
   </div>
 </template>
