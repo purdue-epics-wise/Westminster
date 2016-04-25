@@ -1,62 +1,60 @@
+var selectedActivities = new ReactiveVar()
+
+Template.programPage.onRendered(function () {
+  Session.set("program-docs", []);
+  Session.set("current-doc-names", []);
+
+  selectedActivities.set(this.data.activityIds);
+
+  Session.set("show-activity-select-modal", false);
+});
+
 Template.programPage.helpers({
-  memoryChecked: function () {
-    return this.brainTargets.indexOf("Memory") >= 0;
+  fileNames: function () {
+    var currentFilesReactive = Session.get("current-doc-names");
+    if (sessionDocNames)
+      return sessionDocNames;
   },
-  visuospartialChecked: function () {
-    return this.brainTargets.indexOf("Visuospartial") >= 0;
+  /* Acitivity Select Modal */
+  uploadActivities: function () {
+    return false;
   },
-  concentrationChecked: function () {
-    return this.brainTargets.indexOf("Concentration") >= 0;
+  activities: function () {
+    return Activities.find();
   },
-  orientationChecked: function () {
-    return this.brainTargets.indexOf("Orientation") >= 0;
+  selectedActivities: function () {
+    if (selectedActivities.get()) {
+      return Activities.find({
+        _id: {
+          $in: selectedActivities.get()
+        }
+      });
+    }
   },
-  languageChecked: function () {
-    return this.brainTargets.indexOf("Language") >= 0;
+  showActivities() {
+    return Session.get("show-activity-select-modal") ? '' : 'modal-hidden';
   },
-  judgementChecked: function () {
-    return this.brainTargets.indexOf("Judgement") >= 0;
-  },
-  sequencingChecked: function () {
-    return this.brainTargets.indexOf("Sequencing") >= 0;
-  }
 })
 
 Template.programPage.events({
   "submit form": function (e) {
     e.preventDefault();
 
-    var filterObject = {
-        "Memory": $("#Memory-filter3").is(':checked'),
-        "Visuospartial": $("#Visuospartial-filter3").is(':checked'),
-        "Concentration": $("#Concentration-filter3").is(':checked'),
-        "Orientation": $("#Orientation-filter3").is(':checked'),
-        "Language": $("#Language-filter3").is(':checked'),
-        "Judgement": $("#Judgement-filter3").is(':checked'),
-        "Sequencing": $("#Sequencing-filter3").is(':checked')
-    };
-    var filterList = [];
-    for (filter in filterObject) {
-      if (filterObject[filter])
-        filterList.push(filter);
-    }
-
     var program = {
       _id: this._id,
+      userId: this.userId,
       title: $("#program-submit-title").val(),
       description: $("#program-submit-description").val(),
-      brainTargets: filterList,
+      activityIds: selectedActivities.get(),
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
-      documentLink: $("#program-submit-document-link").val(),
-      tutorialLink: $("#program-submit-tutorial-link").val(),
-      userId: this.userId
+      tutorialLink: $("#program-submit-tutorial-link").val()
     };
 
     console.log(program);
 
     Meteor.call("updateProgram", program, function (error, result) {
       if (error)
-        return console.log("Could not update program.");
+        return console.log(`Could not update program. Reason: ${error.reason}`);
       Router.go("programDetails", { _id: result._id });
     });
   },
@@ -68,5 +66,29 @@ Template.programPage.events({
         return console.log("Could not remove program.");
       Router.go("programList");
     });
+  },
+  /* Activity Select Modal */
+  "click .add-activities-btn": function (e) {
+    e.preventDefault();
+    Session.set("show-activity-select-modal", true);
+  },
+  "click .activity-select-cancel-btn": function (e) {
+    e.preventDefault();
+    Session.set("show-activity-select-modal", false);
+  },
+  "click .activity-select-modal-item": function (e) {
+    e.preventDefault();
+
+    var tmp = selectedActivities.get();
+    $(e.target).toggleClass("selected");
+
+    if ($(e.target).hasClass("selected"))
+      selectedActivities.set(_.union(tmp, this._id));
+    else
+      selectedActivities.set(_.difference(tmp, this._id));
+  },
+  "click .activity-select-submit-btn": function (e) {
+    e.preventDefault();
+    Session.set("show-activity-select-modal", false);
   }
 });
