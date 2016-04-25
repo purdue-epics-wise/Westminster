@@ -31,6 +31,9 @@ Template.activityDetails.helpers({
       _id: data.get().userId,
     }).profile;
   },
+  modifiedTutorialLink() {
+    return this.tutorialLink && getEmbedUrl(this.tutorialLink);
+  },
 });
 
 Template.activityDetails.events({
@@ -51,4 +54,14 @@ function initIcons() {
       $('.favorite-icon').addClass('favorited');
     }
   }
+}
+
+function getEmbedUrl(url) {
+  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  const check = (match&&match[7].length==11)? match[7] : false;
+  if (check) {
+    return `https://www.youtube.com/embed/${check}`;
+  }
+  return check;
 }

@@ -23,7 +23,7 @@ Template.programSubmit.events({
       documentLink: $("#program-submit-document-link").val(),
       tutorialLink: $("#program-submit-tutorial-link").val()
     };
-    
+
     if(validateProgram(program)) {
       /*If the program's frontend validation is true, then move on to specific restriction validation*/
       var errorCount = backendValidateProgram(program);
@@ -40,20 +40,6 @@ Template.programSubmit.events({
       Session.set("program-docs", []);
       Router.go("programDetails", { _id: result._id });
     });
-  }, "click .upload-btn": function (e) {
-    e.preventDefault();
-
-    /*var file = $("#file").get(0).files[0];
-    var fileObj = programDocs.insert(file);
-
-    var sessionProgramDocs = Session.get("program-docs");
-    var sessionDocNames = Session.get("current-doc-names");
-
-    sessionProgramDocs.push(fileObj);
-    sessionDocNames.push(fileObj.name());
-
-    Session.set("program-docs", sessionProgramDocs);
-    Session.set("current-doc-names", sessionDocNames);*/
   },
   /* Activity Select Modal */
   "click .add-activities-btn": function (e) {
@@ -89,9 +75,6 @@ Template.programSubmit.helpers({
       return sessionDocNames;
   },
   /* Acitivity Select Modal */
-  showActivities: function () {
-    return Session.get("show-activity-select-modal");
-  },
   uploadActivities: function () {
     return false;
   },
@@ -106,7 +89,10 @@ Template.programSubmit.helpers({
         }
       });
     }
-  }
+  },
+  showActivities() {
+    return Session.get("show-activity-select-modal") ? '' : 'modal-hidden';
+  },
 })
 
 
@@ -119,7 +105,8 @@ var validateProgram = function(program) {
 }
 
 var tutLinkErrorFunc = function(program) {
-  if ($("#tutLinkErrorPopUp").length) {
+  // This field is OPTIONAL
+  /*if ($("#tutLinkErrorPopUp").length) {
   } else {
     var tag = document.createElement("p");
     var text = document.createTextNode("Tutorial Link is not a valid URL, please check and resubmit.");
@@ -127,7 +114,7 @@ var tutLinkErrorFunc = function(program) {
     var element = document.getElementById("tutLinkError");
     element.appendChild(tag);
     document.getElementById("tutLinkError").id = "tutLinkErrorPopUp";
-  }
+  }*/
 }
 
 var submitError = function(program) {

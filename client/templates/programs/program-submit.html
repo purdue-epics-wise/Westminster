@@ -1,7 +1,9 @@
 <template name="programSubmit">
   <div class="page page-program-submit">
     <div class="container">
-
+      <div class="submit-title">
+        <h2>Program Create</h2>
+      </div>
       <form>
         <div class="col-sm-6">
         <div class="form-group">
@@ -13,7 +15,7 @@
           <input class="form-control" id="program-submit-tags"/>
         </div>
         <div class="form-group">
-          <label>Tutorial Link</label>
+          <label>Tutorial Link <small>(optional)</small></label>
           <input class="form-control" id="program-submit-tutorial-link"/>
           <div id="tutLinkError">
           </div>
@@ -30,14 +32,23 @@
       <div class="program-activities-group">
         <div class="col-sm-6">
           <label>Activities</label>
-          <button class="btn btn-default add-activities-btn">Add Activities</button>
-          or
-          <button class="btn btn-default">Upload Activities</button>
-          {{#each selectedActivities}}
-            {{title}}
-          {{/each}}
+          <div>
+            <button class="btn btn-default add-activities-btn">Add Activities</button>
+            or
+            <a href="{{ pathFor 'activitySubmit' }}">
+              <button class="btn btn-default">Create Activities</button>
+            </a>
+          </div>
+          <div class="selected-activities">
+            {{#each selectedActivities}}
+              <div class="selected-activities-item">
+                {{title}}
+              </div>
+            {{/each}}
+          </div>
         </div>
-          {{#if showActivities}}
+          <div class="activity-modal {{showActivities}}">
+
             <div class="activity-select-modal-background"></div>
             <div class="activity-select-modal-wrapper">
               <div class="activity-select-modal-container">
@@ -61,10 +72,8 @@
                 </div>
               </div>
             </div>
-          {{/if}}
-          {{#if uploadActivities}}
 
-          {{/if}}
+          </div>
         </div>
       </form>
 
