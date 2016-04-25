@@ -90,5 +90,14 @@ Template.programPage.events({
   "click .activity-select-submit-btn": function (e) {
     e.preventDefault();
     Session.set("show-activity-select-modal", false);
-  }
+  },
+  "click #program-delete-btn": function (e) {
+    e.preventDefault();
+
+    Meteor.call("deleteProgram", this._id, this.userId, function (error, result) {
+      if (error)
+        return console.log("Could not remove program.");
+      Router.go("programList");
+    });
+  },
 });

@@ -86,7 +86,7 @@ Template.activityPage.events({
       Router.go("activityDetails", { _id: result._id });
     });
   },
-  "click .delete-btn": function (e) {
+  "click #activity-delete-btn": function (e) {
     e.preventDefault();
 
     Meteor.call("deleteActivity", this._id, this.userId, function (error, result) {
