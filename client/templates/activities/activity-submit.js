@@ -24,7 +24,7 @@ Template.activitySubmit.events({
       title: $("#program-submit-title").val(),
       description: $("#program-submit-description").val(),
       brainTargets: filterList,//$("#program-submit-brain-targets").val().replace(/\s+/g, "").split(","),
-      tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
+      tags: $("#activity-submit-tags").val().replace(/\s+/g, "").split(","),
       tutorialLink: $("#program-submit-tutorial-link").val(),
       documents: currentFileObjs.get(),
       time: Number($('#time-slider').val()),
@@ -166,7 +166,7 @@ var submitError = function(activity) {
 var backendValidateActivity = function(activity) {
   var errorCount = 0;
   var normalURL = new RegExp(/^(ftp|http|https):\/\/[^ "]+$/)
-  var evaluateTutURL = document.getElementById("program-submit-tutorial-link").value;
+  var evaluateTutURL = document.getElementById("activity-submit-tutorial-link").value;
   if(normalURL.test(evaluateTutURL) == false) {
     errorCount += 1;
   }
