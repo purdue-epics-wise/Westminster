@@ -20,7 +20,7 @@ Template.programSubmit.events({
       description: $("#program-submit-description").val(),
       activityIds: selectedActivities.get(),
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
-      documentLink: $("#program-submit-document-link").val(),
+      //documentLink: $("#program-submit-document-link").val(),
       tutorialLink: $("#program-submit-tutorial-link").val()
     };
     
@@ -36,7 +36,7 @@ Template.programSubmit.events({
 
     Meteor.call("insertProgram", program, function (error, result) {
       if (error)
-        return console.log("Could not insert program.");
+        return console.log("Could not insert Program. Reason: " + error.reason);
       Session.set("program-docs", []);
       Router.go("programDetails", { _id: result._id });
     });
@@ -111,7 +111,7 @@ Template.programSubmit.helpers({
 
 
 var validateProgram = function(program) {
-  if (program.title === "" || program.description === "" || program.tags === "" || program.documentLink === "" || program.tutorialLink === "") {
+  if (program.title === "" || program.description === "" || program.tags === "" /*|| program.documentLink === ""*/ || program.tutorialLink === "") {
     return false;
   } else {
     return true;
