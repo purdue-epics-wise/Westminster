@@ -20,7 +20,6 @@ Template.programSubmit.events({
       description: $("#program-submit-description").val(),
       activityIds: selectedActivities.get(),
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
-      //documentLink: $("#program-submit-document-link").val(),
       tutorialLink: $("#program-submit-tutorial-link").val()
     };
     
@@ -111,7 +110,7 @@ Template.programSubmit.helpers({
 
 
 var validateProgram = function(program) {
-  if (program.title === "" || program.description === "" || program.tags === "" /*|| program.documentLink === ""*/ || program.tutorialLink === "") {
+  if (program.title === "" || program.description === "" || program.tags === "" || program.tutorialLink === "") {
     return false;
   } else {
     return true;
