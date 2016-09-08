@@ -21,3 +21,23 @@ Template.programDetails.helpers({
     }) || [];
   }
 });
+
+Template.programDetails.events({
+  'click .favorite-icon': (e) => {
+    $('.favorite-icon').toggleClass('favorited');
+
+    const favorited = $('.favorite-icon').hasClass('favorited');
+    Meteor.call('updateFavoriteProgram', data.get()._id, favorited, (error, result) => {
+      if (error) return console.error(`Did not update favorites. Reason: ${error.reason}`);
+      console.log(`Favorites: ${Meteor.user().profile.favoritePrograms}`);
+    });
+  }
+});
+
+function initIcons() {
+  if (Meteor.user() && data.get()) {
+    if (_.indexOf(Meteor.user().profile.favoritePrograms, data.get()._id) !== -1) {
+      $('.favorite-icon').addClass('favorited');
+    }
+  }
+}

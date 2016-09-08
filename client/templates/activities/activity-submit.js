@@ -21,11 +21,11 @@ Template.activitySubmit.events({
     uploadFiles();
 
     var activity = {
-      title: $("#program-submit-title").val(),
-      description: $("#program-submit-description").val(),
+      title: $("#activity-submit-title").val(),
+      description: $("#activity-submit-description").val(),
       brainTargets: filterList,//$("#program-submit-brain-targets").val().replace(/\s+/g, "").split(","),
       tags: $("#activity-submit-tags").val().replace(/\s+/g, "").split(","),
-      tutorialLink: $("#program-submit-tutorial-link").val(),
+      tutorialLink: $("#activity-submit-tutorial-link").val(),
       documents: currentFileObjs.get(),
       time: Number($('#time-slider').val()),
     };
