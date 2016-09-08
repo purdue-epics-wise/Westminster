@@ -166,7 +166,7 @@ var submitError = function(activity) {
 var backendValidateActivity = function(activity) {
   var errorCount = 0;
   var normalURL = new RegExp(/^(ftp|http|https):\/\/[^ "]+$/)
-  var evaluateTutURL = document.getElementById("program-submit-tutorial-link").value;
+  var evaluateTutURL = document.getElementById("activity-submit-tutorial-link").value;
   if(normalURL.test(evaluateTutURL) == false) {
     errorCount += 1;
   }
