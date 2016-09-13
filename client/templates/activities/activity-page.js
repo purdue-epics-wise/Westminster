@@ -1,3 +1,11 @@
+var startTime;
+
+Template.activityPage.onRendered(function () {
+  startTime = this.data.time;
+  sliderInit();
+});
+
+
 Template.activityPage.helpers({
   memoryChecked: function () {
     return this.brainTargets.indexOf("Memory") >= 0;
@@ -49,7 +57,8 @@ Template.activityPage.events({
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
       documentLink: $("#program-submit-document-link").val(),
       tutorialLink: $("#program-submit-tutorial-link").val(),
-      userId: this.userId
+      userId: this.userId,
+      time: Number($('#time-slider').val()),
     };
 
     console.log(activity);
@@ -70,3 +79,19 @@ Template.activityPage.events({
     });
   }
 });
+
+function sliderInit() {
+  const slider = $('#time-slider').noUiSlider({
+    start: startTime,
+    step: 0.25,
+    range: {
+      min: 0.5,
+      max: 3,
+    },
+  });
+
+  $('#current-time').text(`${startTime} Minutes`);
+  slider.on('slide', (e) => {
+    $('#current-time').text(`${$(e.target).val()} Minutes`);
+  });
+}
