@@ -7,26 +7,17 @@ Template.activityPage.onRendered(function () {
 
 
 Template.activityPage.helpers({
-  memoryChecked: function () {
-    return this.brainTargets.indexOf("Memory") >= 0;
+  frontalChecked: function () {
+    return this.brainTargets.indexOf("Frontal") >= 0;
   },
-  visuospartialChecked: function () {
-    return this.brainTargets.indexOf("Visuospartial") >= 0;
+  parietalChecked: function () {
+    return this.brainTargets.indexOf("Parietal") >= 0;
   },
-  concentrationChecked: function () {
-    return this.brainTargets.indexOf("Concentration") >= 0;
+  temporalChecked: function () {
+    return this.brainTargets.indexOf("Temporal") >= 0;
   },
-  orientationChecked: function () {
-    return this.brainTargets.indexOf("Orientation") >= 0;
-  },
-  languageChecked: function () {
-    return this.brainTargets.indexOf("Language") >= 0;
-  },
-  judgementChecked: function () {
-    return this.brainTargets.indexOf("Judgement") >= 0;
-  },
-  sequencingChecked: function () {
-    return this.brainTargets.indexOf("Sequencing") >= 0;
+  occipitalChecked: function () {
+    return this.brainTargets.indexOf("Occipital") >= 0;
   }
 })
 
