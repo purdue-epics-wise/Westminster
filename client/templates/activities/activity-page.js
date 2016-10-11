@@ -46,7 +46,7 @@ Template.activityPage.events({
       title: $("#program-submit-title").val(),
       description: $("#program-submit-description").val(),
       brainTargets: filterList,
-      tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
+      tags: $("#activity-submit-tags").val().replace(/\s+/g, "").split(","),
       documentLink: $("#program-submit-document-link").val(),
       tutorialLink: $("#program-submit-tutorial-link").val(),
       userId: this.userId

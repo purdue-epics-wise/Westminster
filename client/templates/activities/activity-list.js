@@ -1,3 +1,4 @@
+
 Template.activityList.onCreated(function () {
   Session.set("query-filter", [
     "Frontal", "Parietal", "Temporal", "Occipital",
