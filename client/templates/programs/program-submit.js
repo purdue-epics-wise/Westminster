@@ -31,7 +31,6 @@ Template.programSubmit.events({
           return (tutLinkErrorFunc());
         }
         else {
-          return (submitError());
         }
       }
     }
