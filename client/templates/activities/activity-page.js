@@ -9,12 +9,16 @@ Template.activityPage.onRendered(function () {
   startTime = this.data.time;
   sliderInit();
   currentFiles.set([]);
-  currentFileObjs.set([]);
+  currentFileObjs.set(this.data.documents);
   fileNames = [];
 
   Session.set("documents-ready", false);
   activityFiles = this.data.documents;
   Session.set("documents-ready", true);
+
+  //Session.set("upload-status", "No Files Uploaded");
+  //Session.set("documents-ready", false);
+
 
   Tracker.autorun(() => {
     if (this.data) data.set(this.data);
@@ -44,6 +48,9 @@ Template.activityPage.helpers({
       });
       return fileNames;
     }
+  },
+  uploadStatus: function () {
+    return Session.get("upload-status");
   },
   documentRecords: function () {
     if (Session.get("documents-ready")) {
@@ -85,12 +92,13 @@ Template.activityPage.events({
       time: Number($('#time-slider').val()),
     };
 
+    console.log(currentFileObjs.get());
     console.log(activity);
-    console.log(this._id);
-    console.log(activity._id);
-    console.log(activity.userId);
-    console.log(this.userId);
-    console.log(Meteor.userId());
+    //console.log(this._id);
+    //console.log(activity._id);
+    //console.log(activity.userId);
+    //console.log(this.userId);
+    //console.log(Meteor.userId());
 
     Meteor.call("updateActivity", activity, this._id, this.userId, function (error, result) {
       if (error)
@@ -118,6 +126,36 @@ Template.activityPage.events({
         return console.log("Could not remove activity. Reason: " + error.reason);
       Router.go("activityList");
     });
+  },
+
+  //function currently delets all Files in an activity. In future for QoL improvement
+  //function should only removed the file if the corresponding button is pressed
+  "click .deleteFile": function (e) {
+    currentFileObjs.set([]);
+    currentFiles.set([]);
+    //fileNames = [];
+    //var tmp = currentFileObjs.get();
+    //var save = currentFileObjs.get();
+    //_.each(activityFiles, function (fileObj) {
+    //  save.pop();
+    //});
+    //for (var i = 0; i < 3; i++) {
+    //  save.push(tmp.pop());
+    //};
+    //tmp.pop();
+    //for (var i = 0; i < 3; i++) {
+    //  tmp.push(save.pop());
+    //};
+    //tmp[2].remove();
+    //tmp.pop();
+    //for (var i = 0; i < tmp.length; i++) {
+    //  tmp.pop();
+    //};
+    //tmp.set([]);
+    //currentFileObjs.set(tmp);
+    Session.set("documents-ready", false);
+    //Session.set("documents-ready", true);
+
   }
 });
 
