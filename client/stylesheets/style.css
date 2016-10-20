@@ -71,7 +71,7 @@ h2 {
 }
 
 .program-description {
-
+  border-bottom: 3px solid #ccc;
 }
 
 #submitError {

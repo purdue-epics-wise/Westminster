@@ -31,9 +31,11 @@ Template.activitySubmit.events({
     };
 
     if(validateActivity(activity)) {
-      var errorCount = backendValidateActivity(activity);
-      if (errorCount === 1) {
-        return (tutLinkErrorFunc(activity));
+      if ($("#activity-submit-tutorial-link").val() != "") {
+        var errorCount = backendValidateActivity(activity);
+        if (errorCount === 1) {
+          return (tutLinkErrorFunc(activity));
+        } 
       }
     }
 
@@ -143,7 +145,7 @@ var uploadComplete = function (numberOfUploads, documentPaths) {
 }
 
 var validateActivity = function(activity) {
-      if (activity.title === "" || activity.description === "" || activity.tags === "" || activity.documentLink === "" || activity.tutorialLink === "") {
+      if (activity.title === "" || activity.description === "" || activity.tags === "") {
         return false;
       } else {
         return true;
@@ -175,8 +177,7 @@ var backendValidateActivity = function(activity) {
 }
 
 var tutLinkErrorFunc = function(activity) {
-  // Optional field now
-  /*if ($("#tutLinkErrorPopUp").length) {
+  if ($("#tutLinkErrorPopUp").length) {
   } else {
     var tag = document.createElement("p");
     var text = document.createTextNode("Tutorial Link is not a valid URL, please check and resubmit.");
@@ -184,5 +185,50 @@ var tutLinkErrorFunc = function(activity) {
     var element = document.getElementById("activityTutError");
     element.appendChild(tag);
     document.getElementById("activityTutError").id = "tutLinkErrorPopUp";
-  }*/
+  }
+}
+
+var appendYoutube = function(activity) {
+  var youtubeCheck = 0;
+  var tutLink = document.getElementById("activity-submit-tutorial-link").value;
+  // https://www.youtube.com/watch?v=kMhw5MFYU0s
+  // https://www.youtube.com/embed/DfF1KhfZDBM
+  for(i = 0; i < tutLink.length; i++) {
+    if(tutLink[i] === 'y') {
+      if(tutLink[i + 1] === 'o') {
+        if(tutLink[i + 2] === 'u') {
+          if(tutLink[i + 3] === 't') {
+            if(tutLink[i + 4] === 'u') {
+              if(tutLink[i + 5] === 'b') {
+                if(tutLink[i + 6] === 'e') {
+                  youtubeCheck++;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  if(youtubeCheck) {
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = tutLink.match(regExp);
+    if ( match && match[7].length == 11 ){
+        document.getElementById("activity-submit-tutorial-link").value =  "http://www.youtube.com/embed/" + match[7];
+        console.log(document.getElementById("activity-submit-tutorial-link").value);
+    }else{
+        alert("Could not extract video ID.");
+    }
+  }
+
+  //Finds the youtube video ID from a link
+  // Not used in current build
+  return;
+}
+
+function setCharAt(str,index,chr) {
+    if(index > str.length-1) return str;
+    return str.substr(0,index) + chr + str.substr(index+1);
 }

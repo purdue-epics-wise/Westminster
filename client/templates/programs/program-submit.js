@@ -25,14 +25,16 @@ Template.programSubmit.events({
     
     if(validateProgram(program)) {
       /*If the program's frontend validation is true, then move on to specific restriction validation*/
-      var errorCount = backendValidateProgram(program);
-      if (errorCount === 1) {
-        return (tutLinkErrorFunc());
+      if($("#program-submit-tutorial-link").val() != "") {
+        var errorCount = backendValidateProgram(program);
+        if (errorCount === 1) {
+          return (tutLinkErrorFunc());
+        }
+        else {
+        }
       }
-    } else {
-      return (submitError());
     }
-
+    
     Meteor.call("insertProgram", program, function (error, result) {
       if (error)
         return console.log("Could not insert Program. Reason: " + error.reason);
@@ -110,7 +112,7 @@ Template.programSubmit.helpers({
 
 
 var validateProgram = function(program) {
-  if (program.title === "" || program.description === "" || program.tags === "" || program.tutorialLink === "") {
+  if (program.title === "" || program.description === "" || program.tags === "") {
     return false;
   } else {
     return true;
