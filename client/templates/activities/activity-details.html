@@ -21,13 +21,13 @@
           <p>{{description}}</p>
         </div>
 
-        <div class="activity-time col-sm-3">
+        <div class="activity-time col-sm-2 activity-detail-spacing">
           <h4>Time</h4>
           <ul>
-            <li>{{time}} Minute</li>
+            <li>{{time}} Minutes</li>
           </ul>
         </div>
-        <div class="activity-brain-targets col-sm-3">
+        <div class="activity-brain-targets col-sm-2 activity-detail-spacing">
           <h4>Brain Targets</h4>
           <ul>
             {{#each brainTargets}}
@@ -35,7 +35,7 @@
             {{/each}}
           </ul>
         </div>
-        <div class="activity-tags col-sm-3">
+        <div class="activity-tags col-sm-2 activity-detail-spacing">
           <h4>Tags</h4>
           <ul>
             {{#each tags}}
@@ -43,7 +43,7 @@
             {{/each}}
           </ul>
         </div>
-        <div class="activity-document-link col-sm-3">
+        <div class="activity-document-link col-sm-2 activity-detail-spacing">
           <h4>Documents</h4>
           <ul>
             {{#each documentRecords}}
@@ -52,8 +52,11 @@
           </ul>
         </div>
         {{#if tutorialLink}}
-          <div class="activity-tutorial-link">
-            <iframe width="560" height="315" src="{{tutorialLink}}" frameborder="0" allowfullscreen></iframe>
+          <div class="activity-document-link col-sm-2 activity-detail-spacing">
+            <h4>Tutorial Link</h4>
+            <div class="activity-tutorial-link">
+            <a href="{{tutorialLink}}">{{tutorialLink}}</a>
+            </div>
           </div>
         {{/if}}
       </div>
