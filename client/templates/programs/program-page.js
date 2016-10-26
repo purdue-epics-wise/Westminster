@@ -68,5 +68,28 @@ Template.programPage.events({
         return console.log("Could not remove program.");
       Router.go("programList");
     });
+  },
+  "click .add-activities-btn": function (e) {
+    e.preventDefault();
+    Session.set("show-activity-select-modal", true);
+  },
+  "click .activity-select-cancel-btn": function (e) {
+    e.preventDefault();
+    Session.set("show-activity-select-modal", false);
+  },
+  "click .activity-select-modal-item": function (e) {
+    e.preventDefault();
+
+    var tmp = selectedActivities.get();
+    $(e.target).toggleClass("selected");
+
+    if ($(e.target).hasClass("selected"))
+      selectedActivities.set(_.union(tmp, this._id));
+    else
+      selectedActivities.set(_.difference(tmp, this._id));
+  },
+  "click .activity-select-submit-btn": function (e) {
+    e.preventDefault();
+    Session.set("show-activity-select-modal", false);
   }
 });

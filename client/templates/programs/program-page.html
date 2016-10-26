@@ -1,81 +1,66 @@
 <template name="programPage">
   <div class="page page-program-page">
     <div class="container">
-      <h2 class="program-title">{{title}}</h2>
-    </div>
-
-    <div class="container">
-
       <form>
-        
+        <div class="col-sm-6">
         <div class="form-group">
           <label>Program Title</label>
           <input class="form-control" id="program-submit-title" value="{{title}}"/>
-        </div>
-        <div class="form-group">
-          <label>Description</label>
-          <input class="form-control" id="program-submit-description" value="{{description}}"/>
-        </div>
-        <!--<select ng-model="newProgram.brainTargets">
-          <option value="Memory">Memory</option>
-          <option value="Vision">Vision</option>
-          <option value="Smell">Smell</option>
-        </select>
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="brain-target-dropdown" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-            Select Brain Target
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown">
-            <li><a href="#">Memory</a></li>
-            <li><a href="#">Vision</a></li>
-            <li><a href="#">Smell</a></li>
-          </ul>
-        </div>-->
-        <!--<div class="form-group">
-          <label>Brain Targets</label>
-          <input class="form-control" id="program-submit-brain-targets" value="{{brainTargets}}"/>
-        </div>-->
-        <div class="form-group">
-          <label>Brain Targets</label>
-          <div class="container margin-top">
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" checked="{{memoryChecked}}" value="Memory" class="filter-checkbox" id="Memory-filter3"> Memory
-            </div>
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" checked="{{visuospartialChecked}}" value="Visuospartial" class="filter-checkbox" id="Visuospartial-filter3"> Visuospartial
-            </div>
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" checked="{{concentrationChecked}}" value="Concentration" class="filter-checkbox" id="Concentration-filter3"> Concentration
-            </div>
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" checked="{{orientationChecked}}" value="Orientation" class="filter-checkbox" id="Orientation-filter3"> Orientation
-            </div>
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" checked="{{languageChecked}}" value="Language" class="filter-checkbox" id="Language-filter3"> Language
-            </div>
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" checked="{{judgementChecked}}" value="Judgement" class="filter-checkbox" id="Judgement-filter3"> Judgement
-            </div>
-            <div class="input-group float-left padding-left">
-              <input type="checkbox" checked="{{sequencingChecked}}" value="Sequencing" class="filter-checkbox" id="Sequencing-filter3"> Sequencing
-            </div>
-          </div>
         </div>
         <div class="form-group">
           <label>Tags</label>
           <input class="form-control" id="program-submit-tags" value="{{tags}}"/>
         </div>
         <div class="form-group">
-          <label>Document Link</label>
-          <input class="form-control" id="program-submit-document-link" value="{{documentLink}}"/>
-        </div>
-        <div class="form-group">
           <label>Tutorial Link</label>
           <input class="form-control" id="program-submit-tutorial-link" value="{{tutorialLink}}"/>
         </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" id="program-submit-description" value="{{description}}"></textarea>
+        </div>
         <button type="submit" class="btn btn-default">Submit</button>
         <button type="button" class="btn btn-danger delete-btn">Delete</button>
+      </div>
+        <div class="program-activities-group">
+          <div class="col-sm-6">
+            <label>Activities</label>
+            <button class="btn btn-default add-activities-btn">Add Activities</button>
+            or
+            <button class="btn btn-default">Upload Activities</button>
+            {{#each selectedActivities}}
+              {{title}}
+            {{/each}}
+          </div>
+          {{#if showActivities}}
+            <div class="activity-select-modal-background"></div>
+            <div class="activity-select-modal-wrapper">
+              <div class="activity-select-modal-container">
+                <div class="activity-select-modal-title">
+                  <h5>Activities</h5>
+                  <p>
+                    Select as many Activities as you would like to add to this Program
+                  </p>
+                </div>
+                <div class="activity-select-modal-list">
+                  {{#each activities}}
+                    <!-- TODO: Activity list design -->
+                    <div class="activity-select-modal-item">
+                      {{title}}
+                    </div>
+                  {{/each}}
+                </div>
+                <div class="activity-select-modal-submit">
+                  <button class="activity-select-submit-btn btn btn-default">Done</button>
+                  <button class="activity-select-cancel-btn btn btn-danger">Cancel</button>
+                </div>
+              </div>
+            </div>
+          {{/if}}
+          {{#if uploadActivities}}
+
+          {{/if}}
+        </div>
       </form>
 
     </div>
