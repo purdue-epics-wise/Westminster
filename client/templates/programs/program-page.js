@@ -117,5 +117,8 @@ Template.programPage.events({
   "click .activity-select-submit-btn": function (e) {
     e.preventDefault();
     Session.set("show-activity-select-modal", false);
+  },
+  "click .deleteActivity": function (e) {
+    selectedActivities.set([]);
   }
 });
