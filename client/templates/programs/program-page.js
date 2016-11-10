@@ -1,24 +1,45 @@
+const activityIds = new ReactiveVar();
+var selectedActivities = new ReactiveVar()
+selectedActivities.set([]);
+Template.programPage.onRendered(() => {
+  Tracker.autorun(() => {
+    //if (this.activityIds) activityIds.set(this.activityIds);
+    if (this.data) data.set(this.data);
+  });  
+});
+
 Template.programPage.helpers({
-  memoryChecked: function () {
-    return this.brainTargets.indexOf("Memory") >= 0;
+  owner() {
+    const user = Meteor.users.findOne({
+      _id: this.userId,
+    });
+    return user && user.profile;
   },
-  visuospartialChecked: function () {
-    return this.brainTargets.indexOf("Visuospartial") >= 0;
+  originalActivities() {
+    return this.activityIds && Activities.find({
+      _id: {
+        $in: this.activityIds,
+      },
+    }) || [];
   },
-  concentrationChecked: function () {
-    return this.brainTargets.indexOf("Concentration") >= 0;
+    /* Acitivity Select Modal */
+  showActivities: function () {
+    return Session.get("show-activity-select-modal");
   },
-  orientationChecked: function () {
-    return this.brainTargets.indexOf("Orientation") >= 0;
+  uploadActivities: function () {
+    return false;
   },
-  languageChecked: function () {
-    return this.brainTargets.indexOf("Language") >= 0;
+  allActivities: function () {
+    return Activities.find();
   },
-  judgementChecked: function () {
-    return this.brainTargets.indexOf("Judgement") >= 0;
-  },
-  sequencingChecked: function () {
-    return this.brainTargets.indexOf("Sequencing") >= 0;
+  selectedActivities: function () {
+    if (selectedActivities.get()) {
+      return Activities.find({
+        _id: {
+          $in: selectedActivities.get()
+        }
+      });
+    }
   }
 })
 
@@ -43,11 +64,16 @@ Template.programPage.events({
 
     var program = {
       _id: this._id,
-      title: $("#program-submit-title").val(),
+      /*title: $("#program-submit-title").val(),
       description: $("#program-submit-description").val(),
       brainTargets: filterList,
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
       documentLink: $("#program-submit-document-link").val(),
+      tutorialLink: $("#program-submit-tutorial-link").val(),*/
+      title: $("#program-submit-title").val(),
+      description: $("#program-submit-description").val(),
+      activityIds: selectedActivities.get(),
+      tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
       tutorialLink: $("#program-submit-tutorial-link").val(),
       userId: this.userId
     };
