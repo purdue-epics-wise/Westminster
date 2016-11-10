@@ -27,7 +27,7 @@ Template.programDetails.events({
     $('.favorite-icon').toggleClass('favorited');
 
     const favorited = $('.favorite-icon').hasClass('favorited');
-    Meteor.call('updateFavoriteProgram', data.get()._id, favorited, (error, result) => {
+    Meteor.call('updateFavoriteProgram', data.get(), favorited, (error, result) => {
       if (error) return console.error(`Did not update favorites. Reason: ${error.reason}`);
       console.log(`Favorites: ${Meteor.user().profile.favoritePrograms}`);
     });
