@@ -16,10 +16,6 @@ Template.activityPage.onRendered(function () {
   activityFiles = this.data.documents;
   Session.set("documents-ready", true);
 
-  //Session.set("upload-status", "No Files Uploaded");
-  //Session.set("documents-ready", false);
-
-
   Tracker.autorun(() => {
     if (this.data) data.set(this.data);
   });
@@ -92,14 +88,6 @@ Template.activityPage.events({
       time: Number($('#time-slider').val()),
     };
 
-    console.log(currentFileObjs.get());
-    console.log(activity);
-    //console.log(this._id);
-    //console.log(activity._id);
-    //console.log(activity.userId);
-    //console.log(this.userId);
-    //console.log(Meteor.userId());
-
     Meteor.call("updateActivity", activity, this._id, this.userId, function (error, result) {
       if (error)
         return console.log("Could not update Activity. Reason: " + error.reason);
@@ -110,7 +98,6 @@ Template.activityPage.events({
     Session.set("upload-status", "Uploading...");
 
     FS.Utility.eachFile(e, function (file) {
-      //var fileObj = new FS.File(file);
       var tmp = currentFiles.get();
       var files = _.union(tmp, file);
 
