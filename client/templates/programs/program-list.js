@@ -1,7 +1,6 @@
 Template.programList.onCreated(function () {
   Session.set("query-filter", [
-    "Memory", "Visuospartial", "Concentration",
-    "Orientation", "Language", "Judgement", "Sequencing"
+  "Frontal", "Parietal", "Temporal", "Occipital",
   ]);
 });
 

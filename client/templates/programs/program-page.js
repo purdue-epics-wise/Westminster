@@ -3,7 +3,6 @@ var selectedActivities = new ReactiveVar()
 selectedActivities.set([]);
 Template.programPage.onRendered(() => {
   Tracker.autorun(() => {
-    //if (this.activityIds) activityIds.set(this.activityIds);
     if (this.data) data.set(this.data);
   });  
 });
@@ -21,6 +20,19 @@ Template.programPage.helpers({
         $in: this.activityIds,
       },
     }) || [];
+  },
+    // Appropriately sets brain targets to checked/unchecked
+  frontalChecked: function () {
+    return this.brainTargets.indexOf("Frontal") >= 0;
+  },
+  parietalChecked: function () {
+    return this.brainTargets.indexOf("Parietal") >= 0;
+  },
+  temporalChecked: function () {
+    return this.brainTargets.indexOf("Temporal") >= 0;
+  },
+  occipitalChecked: function () {
+    return this.brainTargets.indexOf("Occipital") >= 0;
   },
     /* Acitivity Select Modal */
   showActivities: function () {
@@ -48,13 +60,10 @@ Template.programPage.events({
     e.preventDefault();
 
     var filterObject = {
-        "Memory": $("#Memory-filter3").is(':checked'),
-        "Visuospartial": $("#Visuospartial-filter3").is(':checked'),
-        "Concentration": $("#Concentration-filter3").is(':checked'),
-        "Orientation": $("#Orientation-filter3").is(':checked'),
-        "Language": $("#Language-filter3").is(':checked'),
-        "Judgement": $("#Judgement-filter3").is(':checked'),
-        "Sequencing": $("#Sequencing-filter3").is(':checked')
+    "Frontal": $("#Frontal-filter").is(':checked'),
+    "Parietal": $("#Parietal-filter").is(':checked'),
+    "Temporal": $("#Temporal-filter").is(':checked'),
+    "Occipital": $("#Occipital-filter").is(':checked')
     };
     var filterList = [];
     for (filter in filterObject) {
@@ -64,14 +73,9 @@ Template.programPage.events({
 
     var program = {
       _id: this._id,
-      /*title: $("#program-submit-title").val(),
-      description: $("#program-submit-description").val(),
-      brainTargets: filterList,
-      tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
-      documentLink: $("#program-submit-document-link").val(),
-      tutorialLink: $("#program-submit-tutorial-link").val(),*/
       title: $("#program-submit-title").val(),
       description: $("#program-submit-description").val(),
+      brainTargets: filterList,
       activityIds: selectedActivities.get(),
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
       tutorialLink: $("#program-submit-tutorial-link").val(),
