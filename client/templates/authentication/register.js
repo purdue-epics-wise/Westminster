@@ -15,13 +15,23 @@ Template.register.events({
 				favoriteActivities: [],
 				favoritePrograms: [],
 			}
-		}, function (error) {
+		}, 
+
+		function (error) {
 			if (error) {
 				alert("There was an error creating your account. Please try again later.");
 			} else {
-				Router.go("programList");
+				Router.go("welcome");
 			}
-		});
+		},
+		Meteor.call(
+			'sendEmail',
+			'WestminsterWLTest@gmail.com',
+			'WestminsterWLTest@gmail.com',
+			'An account was created!',
+			'Account created by ' + $(e.target).find("#register-full-name").val() + '.'
+		)
+		);
 	}
 });
 

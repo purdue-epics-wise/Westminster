@@ -11,7 +11,7 @@ Template.login.events({
 					$("#login-email").select();
 					throwError("The email or password you entered is incorrect. Please try again.");
 				} else {
-					Router.go("programList");
+					Router.go("welcome");
 				}
 			}
 		);
