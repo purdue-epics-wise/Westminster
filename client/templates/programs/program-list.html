@@ -1,10 +1,11 @@
 <template name="programList">
   <div class="page page-program-list">
+   <div class="filter-search-container container">
     <div class="filter-container container margin-top">
       <div class="filter-container-title float-left">
         <h4>Filters</h4>
       </div>
-      <div class="container margin-top">
+      <div class="margin-top">
         <div class="input-group float-left padding-left">
           <input type="checkbox" checked="true" value="Frontal" class="filter-checkbox" id="Frontal-filter"> Frontal
         </div>
@@ -20,15 +21,29 @@
       </div>
     </div>
 
+    <div class="program-search container margin-top">
+        <h4>Search</h4>
+        {{> EasySearch.Input index=programIndex}}
+      </div>
+    </div>
+
+
     <div class="programs-container container" style="padding-bottom: 120px;">
       <div class="program-container-title separate">
         <h2>Programs</h2>
-      </div>
-      <div class="program-list">
-        {{#each programs}}
-          {{> programItem}}
-        {{/each}}
+        <div class="program-list">
+          {{#EasySearch.IfInputEmpty index=programIndex}}
+            {{#each programs}}
+              {{> programItem}}
+            {{/each}}
+          {{else}}
+            {{#EasySearch.Each index=programIndex}}
+              {{> programItem}}
+            {{/EasySearch.Each}}
+          {{/EasySearch.IfInputEmpty}}
       </div>
     </div>
   </div>
+
+</div>
 </template>
