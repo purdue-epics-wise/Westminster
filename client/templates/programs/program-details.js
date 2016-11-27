@@ -1,8 +1,10 @@
 const activityIds = new ReactiveVar();
+const data = new ReactiveVar(); //THIS DATA IS NOT DEFINED RIPERINO
 
 Template.programDetails.onRendered(() => {
   Tracker.autorun(() => {
     if (this.activityIds) activityIds.set(this.activityIds);
+    if (this.data) data.set(this.data);
   });
 });
 
@@ -27,7 +29,7 @@ Template.programDetails.events({
     $('.favorite-icon').toggleClass('favorited');
 
     const favorited = $('.favorite-icon').hasClass('favorited');
-    Meteor.call('updateFavoriteProgram', data.get(), favorited, (error, result) => {
+    Meteor.call('updateFavoriteProgram', data.get()._id, favorited, (error, result) => {
       if (error) return console.error(`Did not update favorites. Reason: ${error.reason}`);
       console.log(`Favorites: ${Meteor.user().profile.favoritePrograms}`);
     });
