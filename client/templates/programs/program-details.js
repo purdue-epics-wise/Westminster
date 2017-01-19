@@ -1,8 +1,10 @@
 const activityIds = new ReactiveVar();
+const data = new ReactiveVar(); //THIS DATA IS NOT DEFINED RIPERINO
 
 Template.programDetails.onRendered(() => {
   Tracker.autorun(() => {
     if (this.activityIds) activityIds.set(this.activityIds);
+    if (this.data) data.set(this.data);
   });
 });
 

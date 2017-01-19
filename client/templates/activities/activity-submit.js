@@ -23,7 +23,7 @@ Template.activitySubmit.events({
     var activity = {
       title: $("#activity-submit-title").val(),
       description: $("#activity-submit-description").val(),
-      brainTargets: filterList,//$("#program-submit-brain-targets").val().replace(/\s+/g, "").split(","),
+      brainTargets: filterList,
       tags: $("#activity-submit-tags").val().replace(/\s+/g, "").split(","),
       tutorialLink: $("#activity-submit-tutorial-link").val(),
       documents: currentFileObjs.get(),

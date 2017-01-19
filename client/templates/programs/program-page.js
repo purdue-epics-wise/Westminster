@@ -1,24 +1,57 @@
+const activityIds = new ReactiveVar();
+var selectedActivities = new ReactiveVar()
+selectedActivities.set([]);
+Template.programPage.onRendered(() => {
+  Tracker.autorun(() => {
+    if (this.data) data.set(this.data);
+  });  
+});
+
 Template.programPage.helpers({
-  memoryChecked: function () {
-    return this.brainTargets.indexOf("Memory") >= 0;
+  owner() {
+    const user = Meteor.users.findOne({
+      _id: this.userId,
+    });
+    return user && user.profile;
   },
-  visuospartialChecked: function () {
-    return this.brainTargets.indexOf("Visuospartial") >= 0;
+  originalActivities() {
+    return this.activityIds && Activities.find({
+      _id: {
+        $in: this.activityIds,
+      },
+    }) || [];
   },
-  concentrationChecked: function () {
-    return this.brainTargets.indexOf("Concentration") >= 0;
+    // Appropriately sets brain targets to checked/unchecked
+  frontalChecked: function () {
+    return this.brainTargets.indexOf("Frontal") >= 0;
   },
-  orientationChecked: function () {
-    return this.brainTargets.indexOf("Orientation") >= 0;
+  parietalChecked: function () {
+    return this.brainTargets.indexOf("Parietal") >= 0;
   },
-  languageChecked: function () {
-    return this.brainTargets.indexOf("Language") >= 0;
+  temporalChecked: function () {
+    return this.brainTargets.indexOf("Temporal") >= 0;
   },
-  judgementChecked: function () {
-    return this.brainTargets.indexOf("Judgement") >= 0;
+  occipitalChecked: function () {
+    return this.brainTargets.indexOf("Occipital") >= 0;
   },
-  sequencingChecked: function () {
-    return this.brainTargets.indexOf("Sequencing") >= 0;
+    /* Acitivity Select Modal */
+  showActivities: function () {
+    return Session.get("show-activity-select-modal");
+  },
+  uploadActivities: function () {
+    return false;
+  },
+  allActivities: function () {
+    return Activities.find();
+  },
+  selectedActivities: function () {
+    if (selectedActivities.get()) {
+      return Activities.find({
+        _id: {
+          $in: selectedActivities.get()
+        }
+      });
+    }
   }
 })
 
@@ -27,13 +60,10 @@ Template.programPage.events({
     e.preventDefault();
 
     var filterObject = {
-        "Memory": $("#Memory-filter3").is(':checked'),
-        "Visuospartial": $("#Visuospartial-filter3").is(':checked'),
-        "Concentration": $("#Concentration-filter3").is(':checked'),
-        "Orientation": $("#Orientation-filter3").is(':checked'),
-        "Language": $("#Language-filter3").is(':checked'),
-        "Judgement": $("#Judgement-filter3").is(':checked'),
-        "Sequencing": $("#Sequencing-filter3").is(':checked')
+    "Frontal": $("#Frontal-filter").is(':checked'),
+    "Parietal": $("#Parietal-filter").is(':checked'),
+    "Temporal": $("#Temporal-filter").is(':checked'),
+    "Occipital": $("#Occipital-filter").is(':checked')
     };
     var filterList = [];
     for (filter in filterObject) {
@@ -46,8 +76,8 @@ Template.programPage.events({
       title: $("#program-submit-title").val(),
       description: $("#program-submit-description").val(),
       brainTargets: filterList,
+      activityIds: selectedActivities.get(),
       tags: $("#program-submit-tags").val().replace(/\s+/g, "").split(","),
-      documentLink: $("#program-submit-document-link").val(),
       tutorialLink: $("#program-submit-tutorial-link").val(),
       userId: this.userId
     };
@@ -68,5 +98,31 @@ Template.programPage.events({
         return console.log("Could not remove program.");
       Router.go("programList");
     });
+  },
+  "click .add-activities-btn": function (e) {
+    e.preventDefault();
+    Session.set("show-activity-select-modal", true);
+  },
+  "click .activity-select-cancel-btn": function (e) {
+    e.preventDefault();
+    Session.set("show-activity-select-modal", false);
+  },
+  "click .activity-select-modal-item": function (e) {
+    e.preventDefault();
+
+    var tmp = selectedActivities.get();
+    $(e.target).toggleClass("selected");
+
+    if ($(e.target).hasClass("selected"))
+      selectedActivities.set(_.union(tmp, this._id));
+    else
+      selectedActivities.set(_.difference(tmp, this._id));
+  },
+  "click .activity-select-submit-btn": function (e) {
+    e.preventDefault();
+    Session.set("show-activity-select-modal", false);
+  },
+  "click .deleteActivity": function (e) {
+    selectedActivities.set([]);
   }
 });
