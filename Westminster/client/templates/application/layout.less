@@ -1,0 +1,62 @@
+@photo-url: url("http://www.wvwl.org/img/gallery/home-gallery-large1.jpg");//url("assets/background-1.jpg");
+@FAQ-photo-url: url("http://www.wvwl.org/img/gallery/home-gallery-large4.jpg");
+
+.background-img-wrapper {
+  width: 100vw;
+  height: 100vh;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -10;
+
+  overflow: hidden;
+}
+
+.background-img {
+  @blur-value: 5px;
+
+  position: absolute;
+  top: -10px;//-(@blur-value * 2);
+  left: -10px;//-(@blur-value * 2);
+
+  min-height: calc(~"100% + 20px");
+  min-width: calc(~"100% + 20px");
+  z-index: -10;
+
+  background: @photo-url no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  -webkit-filter: blur(@blur-value);
+  -moz-filter: blur(@blur-value);
+  -o-filter: blur(@blur-value);
+  -ms-filter: blur(@blur-value);
+  filter: blur(@blur-value);
+}
+
+.background-img-FAQ {
+  @blur-value: 5px;
+
+  position: absolute;
+  top: -10px;//-(@blur-value * 2);
+  left: -10px;//-(@blur-value * 2);
+
+  min-height: calc(~"100% + 20px");
+  min-width: calc(~"100% + 20px");
+  z-index: -10;
+
+  background: @FAQ-photo-url no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  -webkit-filter: blur(@blur-value);
+  -moz-filter: blur(@blur-value);
+  -o-filter: blur(@blur-value);
+  -ms-filter: blur(@blur-value);
+  filter: blur(@blur-value);
+}

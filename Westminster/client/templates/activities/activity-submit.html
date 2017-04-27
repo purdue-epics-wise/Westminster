@@ -1,0 +1,87 @@
+<template name="activitySubmit">
+  <div class="page activity-submit-page">
+
+    <div class="activity-submit-wrapper">
+      <div class="activity-submit-container container">
+
+        <form>
+          <div class="col-sm-6">
+            <div class="form-group">
+             <label>Activity Title</label>
+             <input class="form-control" id="activity-submit-title"/>
+            </div>
+           <div class="form-group">
+             <label>Tags</label>
+             <input class="form-control" id="activity-submit-tags"/>
+           </div>
+           <div class="form-group">
+             <label>Tutorial Link <small>(optional)</small></label>
+             <input class="form-control" id="activity-submit-tutorial-link"/>
+             <div id="activityTutError"></div>
+           </div>
+           <div class="form-group">
+             <label>Description</label>
+             <textarea class="form-control" id="activity-submit-description"></textarea>
+           </div>
+           <button type="submit" class="btn btn-default" >Submit</button>
+          <div id="activityError">
+            <!--If empty field, warning appends here -->
+          </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-6">
+              <label>Brain Targets</label>
+              <div class="container margin-top">
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Attention" class="filter-checkbox" id="Attention-filter"> Attention
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Language" class="filter-checkbox" id="Language-filter"> Language
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Visual-Spatial" class="filter-checkbox" id="VisualSpatial-filter"> Visual-Spatial
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Sensory" class="filter-checkbox" id="Sensory-filter"> Sensory
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Planning/Judgement" class="filter-checkbox" id="Planning-filter"> Planning/Judgement
+                </div>
+              </div>
+              <div class="container margin-top">
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Computation" class="filter-checkbox" id="Computation-filter"> Computation
+                </div>  
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Working Memory" class="filter-checkbox" id="Working-filter"> Working Memory
+                </div>  
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Long Term Memory" class="filter-checkbox" id="Longterm-filter"> Long Term Memory
+                </div>  
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Emotional Memory" class="filter-checkbox" id="Emotional-filter"> Emotional Memory
+                </div>
+              </div>
+              
+              <div class="activity-time">
+                <label>Time</label>
+                <p id="current-time"></p>
+                <div class="slider" id="time-slider"></div>
+              </div>
+              <div class="file-upload-container">
+                <label>Documents</label>
+                <input type="file" multiple name="..." class="activity-file-input"/>
+                <p class="upload-status-label">{{uploadStatus}}</p>
+                {{#each fileNames}}
+                  <p>{{.}}</p>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</template>

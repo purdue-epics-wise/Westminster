@@ -1,0 +1,26 @@
+<template name="register">
+	<div class="page register-page">
+
+		<div class="register-wrapper">
+			<div class="register-container">
+
+				<div class="margin-top animated fadeIn">
+					<h2 class="separate">Register Your Account</h2>
+					<form id="register-form">
+						<input id="register-full-name" type="text" class="auth-input" placeholder="Full Name">
+						<input id="register-community" type="text" class="auth-input" placeholder="Community">
+						<input id="register-email" type="email" class="auth-input" placeholder="Email">
+						<input id="register-password" type="password" class="auth-input" placeholder="Password">
+
+						<button type="submit" class="btn auth-submit">Register</button>
+						<a href="{{ pathFor 'login' }}">
+							<button type="button" class="btn btn-default margin-bottom auth-alt">Already have an account? Login Here</button>
+						</a>
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</template>

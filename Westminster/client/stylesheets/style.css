@@ -1,0 +1,106 @@
+html, body {
+  background-color: #fff !important;
+}
+
+h2 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-size: 2em !important;
+    color: #000 !important;
+    text-shadow: none !important;
+}
+
+.separate {
+  padding-bottom: 20px;
+}
+
+/* LAYOUT */
+#main-blaze {
+  margin-top: 60px;
+}
+
+/* PROGRAM LIST */
+.program-brain-targets {
+
+}
+.program-brain-targets h6 {
+  display: inline;
+}
+.program-brain-targets p {
+  display: inline;
+}
+
+.program-tags {
+
+}
+.program-tags h6 {
+  display: inline;
+}
+.program-tags p {
+  display: inline;
+}
+
+/* GENERAL */
+.page {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding-top: 60px;
+}
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+.padding-left {
+  padding-left: 20px;
+}
+.margin-top {
+  margin-top: 10px;
+}
+.margin-bottom {
+  margin-bottom: 20px !important;
+}
+.padding-bt {
+  padding-left: 14px;
+}
+
+.program-tile {
+
+}
+
+.program-description {
+  border-bottom: 3px solid #ccc;
+}
+
+#submitError {
+  color: red;
+}
+
+#activityError {
+  color: red;
+}
+
+#submitErrorPopUp {
+  color: red;
+  padding-top: 5px;
+}
+
+#activityErrorPopUp {
+  color: red;
+  padding-top: 5px;
+}
+
+#docLinkErrorPopUp {
+  color: red;
+  padding-top: 5px;
+}
+
+#tutLinkErrorPopUp {
+  color: red;
+  padding-top: 5px;
+}

@@ -1,0 +1,66 @@
+<template name="activityDetails">
+  <div class="page activity-details-page">
+
+    <div class="acitivty-details-wrapper well well-sm">
+      <div class="activity-details-container container">
+        <div class="program-tile">
+          <div class="action-items">
+            <a class="float-right" href="{{ pathFor 'activityPage' }}">
+             <i class="ion-edit float-right"></i>
+           </a>
+           <i class="ion-heart float-right favorite-icon"></i>
+          </div>
+          <h2>
+            {{title}}
+            {{#with owner}}
+              <small>Created by {{fullName}} from {{community}}</small>
+            {{/with}}
+          </h2>
+        </div>
+        <div class="activity-description">
+          <p>{{description}}</p>
+        </div>
+
+        <div class="activity-time col-sm-2 activity-detail-spacing">
+          <h4>Time</h4>
+          <ul>
+            <li>{{time}} Minutes</li>
+          </ul>
+        </div>
+        <div class="activity-brain-targets col-sm-2 activity-detail-spacing">
+          <h4>Brain Targets</h4>
+          <ul>
+            {{#each brainTargets}}
+              <li>{{.}}</li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="activity-tags col-sm-2 activity-detail-spacing">
+          <h4>Tags</h4>
+          <ul>
+            {{#each tags}}
+              <li>{{.}}</li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="activity-document-link col-sm-2 activity-detail-spacing">
+          <h4>Documents</h4>
+          <ul>
+            {{#each documentRecords}}
+              <li><a href="{{url download=true}}" target="_parent">{{name}}</a></li>
+            {{/each}}
+          </ul>
+        </div>
+        {{#if tutorialLink}}
+          <div class="activity-document-link col-sm-2 activity-detail-spacing">
+            <h4>Tutorial Link</h4>
+            <div class="activity-tutorial-link">
+            <a href="{{tutorialLink}}">{{tutorialLink}}</a>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+  </div>
+</template>

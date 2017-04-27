@@ -1,0 +1,26 @@
+<template name="login">
+	<div class="page login-page">
+
+		<div class="login-wrapper">
+			<div class="login-container">
+
+				<div class="margin-top animated fadeIn">
+					<h2 class="separate">Login to Your Account</h2>
+					<form id="login-form">
+						<input id="login-email" type="email" class="auth-input" placeholder="Email">
+						<input id="login-password" type="password" class="auth-input" placeholder="Password">
+
+						<button type="submit" class="btn auth-submit">Login</button>
+
+						<a href="{{ pathFor 'register' }}">
+							<button type="button" class="btn btn-default margin-bottom auth-alt">Don't have an account? Register Here</button>
+						</a>
+						<!--<p class="auth-desc">Don't have an account? <a href="{{ pathFor 'register' }}">Register here</a></p>-->
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</template>

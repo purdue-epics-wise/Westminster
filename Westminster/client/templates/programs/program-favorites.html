@@ -1,0 +1,16 @@
+<template name="programFavorites">
+  <div class="page page-program-favorites container">
+
+  <div class="programs-container container" style="padding-bottom: 120px;">
+    <div class="programs-list-wrapper">
+      <h2>Favorite Programs</h2>
+      <div class="program-list-container">
+        {{#each programs}}
+          {{> programItem}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  </div>
+</template>

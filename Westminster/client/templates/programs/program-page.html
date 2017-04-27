@@ -1,0 +1,108 @@
+<template name="programPage">
+  <div class="page page-program-page">
+    <div class="container">
+      <form>
+        <div class="col-sm-6">
+        <div class="form-group">
+          <label>Program Title</label>
+          <input class="form-control" id="program-submit-title" value="{{title}}"/>
+        </div>
+        <div class="form-group">
+          <label>Tags</label>
+          <input class="form-control" id="program-submit-tags" value="{{tags}}"/>
+        </div>
+        <div class="form-group">
+          <label>Tutorial Link</label>
+          <input class="form-control" id="program-submit-tutorial-link" value="{{tutorialLink}}"/>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" id="program-submit-description" value="{{description}}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="button" class="btn btn-danger delete-btn">Delete</button>
+      </div>
+        <div class="program-activities-group">
+          <div class="col-sm-6">
+            <label>Brain Targets</label>
+              <div class="container margin-top">
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Attention" class="filter-checkbox" id="Attention-filter" checked="{{attentionChecked}}"> Attention
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Language" class="filter-checkbox" id="Language-filter" checked="{{languageChecked}}"> Language
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Visual-Spatial" class="filter-checkbox" id="VisualSpatial-filter" checked="{{visualspatialChecked}}"> Visual-Spatial
+                </div>
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Sensory" class="filter-checkbox" id="Sensory-filter" checked="{{sensoryChecked}}"> Sensory
+                </div>
+                <div class="input-group float-left padding-left">  
+                  <input type="checkbox" value="Planning/Judgement" class="filter-checkbox" id="Planning-filter" checked="{{planningChecked}}"> Planning/Judgement
+                </div>
+              </div> 
+              <div class="container margin-top">   
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Computation" class="filter-checkbox" id="Computation-filter" checked="{{computationChecked}}"> Computation
+                </div>  
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Working Memory" class="filter-checkbox" id="Working-filter" checked="{{workingChecked}}"> Working Memory
+                </div>  
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Long Term Memory" class="filter-checkbox" id="Longterm-filter" checked="{{longtermChecked}}"> Long Term Memory
+                </div>  
+                <div class="input-group float-left padding-left">
+                  <input type="checkbox" value="Emotional Memory" class="filter-checkbox" id="Emotional-filter" checked="{{emotionalChecked}}"> Emotional Memory
+                </div>
+              </div>
+              
+            <label>Activities</label>
+            <button class="btn btn-default add-activities-btn">Add Activities</button>
+            or
+            <button class="btn btn-default">Upload Activities</button>
+            <!--<ul>
+              {{#each originalActivities}}
+                <li><a href="{{pathFor 'activityDetails' _id=this._id}}" target="_parent">{{title}}</a></li>
+              {{/each}}
+            </ul> -->
+            <ul>
+            {{#each selectedActivities}}
+              <li>{{title}} <button type="button" class="btn btn-default btn-xs deleteActivity"><span class="glyphicon glyphicon-remove"></span></button></li>
+            {{/each}}
+            </ul>
+          </div>
+          {{#if showActivities}}
+            <div class="activity-select-modal-background"></div>
+            <div class="activity-select-modal-wrapper">
+              <div class="activity-select-modal-container">
+                <div class="activity-select-modal-title">
+                  <h5>Activities</h5>
+                  <p>
+                    Select as many Activities as you would like to add to this Program
+                  </p>
+                </div>
+                <div class="activity-select-modal-list">
+                  {{#each allActivities}}
+                    <!-- TODO: Activity list design -->
+                    <div class="activity-select-modal-item">
+                      {{title}}
+                    </div>
+                  {{/each}}
+                </div>
+                <div class="activity-select-modal-submit">
+                  <button class="activity-select-submit-btn btn btn-default">Done</button>
+                  <button class="activity-select-cancel-btn btn btn-danger">Cancel</button>
+                </div>
+              </div>
+            </div>
+          {{/if}}
+          {{#if uploadActivities}}
+
+          {{/if}}
+        </div>
+      </form>
+
+    </div>
+  </div>
+</template>

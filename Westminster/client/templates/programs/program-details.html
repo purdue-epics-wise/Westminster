@@ -1,0 +1,62 @@
+<template name="programDetails">
+  <div class="page page-program-detail">
+     <div class="program-details-wrapper well well-sm">
+      <div class="program-details-container container">
+        <div class="program-tile">
+          <div class="action-items">
+            <a class="float-right" href="{{ pathFor 'programPage' }}">
+             <i class="ion-edit float-right"></i>
+           </a>
+           <i class="ion-heart float-right favorite-icon"></i>
+          </div>
+          <h2>
+            {{title}}
+            {{#with owner}}
+              <small>Created by {{fullName}} from {{community}}</small>
+            {{/with}}
+          </h2>
+        </div>
+        <div class="program-description">
+          <p>{{description}}</p>
+        </div>
+
+        <div class="program-time col-sm-3">
+          <h4>Time</h4>
+          <ul>
+            <li>{{time}} Minute</li>
+          </ul>
+        </div>
+        <div class="program-brain-targets col-sm-3">
+          <h4>Brain Targets</h4>
+          <ul>
+            {{#each brainTargets}}
+              <li>{{.}}</li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="program-tags col-sm-3">
+          <h4>Tags</h4>
+          <ul>
+            {{#each tags}}
+              <li>{{.}}</li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="program-document-link col-sm-3">
+          <h4>Activities</h4>
+          <ul>
+            {{#each activities}}
+              <li><a href="{{pathFor 'activityDetails' _id=this._id}}" target="_parent">{{title}}</a></li>
+            {{/each}}
+          </ul>
+        </div>
+        {{#if tutorialLink}}
+          <div class="program-tutorial-link">
+            <iframe width="560" height="315" src="{{tutorialLink}}" frameborder="0" allowfullscreen></iframe>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+  </div>
+</template>

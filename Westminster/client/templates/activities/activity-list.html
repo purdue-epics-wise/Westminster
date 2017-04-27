@@ -1,0 +1,64 @@
+<template name="activityList">
+  <div class="page activity-list-page">
+  	<div class="filter-container container margin-top">
+      <div class="filter-container-title float-left">
+        <h4>Filters</h4>
+      </div>
+      <div class="container margin-top">
+        <div class="input-group float-left padding-bt">
+          <input type="checkbox" value="Attention" class="filter-checkbox" id="Attention-filter"> Attention
+        </div>
+        <div class="input-group float-left padding-bt">
+          <input type="checkbox" value="Language" class="filter-checkbox" id="Language-filter"> Language
+        </div>
+        <div class="input-group float-left padding-bt">
+          <input type="checkbox" value="Visual-Spatial" class="filter-checkbox" id="VisualSpatial-filter"> Visual-Spatial
+        </div>
+        <div class="input-group float-left padding-bt">
+          <input type="checkbox" value="Sensory" class="filter-checkbox" id="Sensory-filter"> Sensory
+        </div> 
+        <div class="input-group float-left padding-bt">
+          <input type="checkbox" value="Planning/Judgement" class="filter-checkbox" id="Planning-filter"> Planning/Judgement
+        </div>
+        <div class="input-group float-left padding-bt">
+          <input type="checkbox" value="Computation" class="filter-checkbox" id="Computation-filter"> Computation
+        </div>  
+        <div class="input-group float-left padding-bt">
+          <input type="checkbox" value="Working Memory" class="filter-checkbox" id="Working-filter"> Working Memory
+        </div>  
+        <div class="input-group float-left padding-bt">
+          <input type="checkbox" value="Long Term Memory" class="filter-checkbox" id="Longterm-filter"> Long Term Memory
+        </div>  
+        <div class="input-group float-left padding-bt">
+          <input type="checkbox" value="Emotional Memory" class="filter-checkbox" id="Emotional-filter"> Emotional Memory
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-search-container container">
+      <div class="activity-search container margin-top">
+        <div class="activity-search-container-title float-left">
+          <h4>Search</h4>
+        </div>
+          {{> EasySearch.Input index=activityIndex}} 
+      </div>  
+    </div>
+
+  	<div class="activities-container container" style="padding-bottom: 120px;">
+	    <div class="activity-list-wrapper">
+	    	<h2>Activities</h2>
+	      <div class="activity-list-container">
+          {{#EasySearch.IfInputEmpty index=activityIndex}}
+            {{#each activities}}
+              {{> activityItem}}
+            {{/each}}
+          {{else}}
+            {{#EasySearch.Each index=activityIndex}}
+              {{> activityItem}}
+            {{/EasySearch.Each}}
+          {{/EasySearch.IfInputEmpty}}
+	      </div>
+  		</div>
+    </div>
+  </div>
+</template>
